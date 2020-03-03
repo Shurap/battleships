@@ -1,3 +1,14 @@
+@import './variables.scss';
+@import './fonts.scss';
+
+
 @mixin test-border($color) {
   border: 5px solid $color
+}
+
+@mixin font($size, $font) {
+  font-family: $font;
+  font-size: $size;
+  // font-weight: bold;
+  color: $general-color;
 }

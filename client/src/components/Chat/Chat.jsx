@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { sendMessage } from '../socketio/socketio';
+import styles from './Chat.module.scss';
 
 const Chat = (props) => {
 
@@ -32,7 +33,7 @@ const Chat = (props) => {
   })
 
   return (
-    <div>
+    <div className={styles.chat}>
       <input onChange={onNickChange} value={nick} />
       <input onChange={onTextChange} value={message} />
       <button onClick={onMessageSubmit}>Send</button>

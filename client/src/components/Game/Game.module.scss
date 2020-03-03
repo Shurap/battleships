@@ -1,0 +1,7 @@
+@import '../../globalCSS/mixins.scss';
+@import '../../globalCSS/variables.scss';
+
+.game {
+  @include test-border(red);
+  display: flex;
+}

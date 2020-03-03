@@ -1,0 +1,6 @@
+@import '../../globalCSS/mixins.scss';
+@import '../../globalCSS/variables.scss';
+
+.chat {
+  @include test-border($general-color);
+}
