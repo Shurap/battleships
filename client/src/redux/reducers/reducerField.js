@@ -1,5 +1,5 @@
 import {
-  ADD_CHAT_MESSAGE_TO_STORE,
+  CHANGE_CONTENT_FIELD_IN_STORE,
 } from '../constants';
 
 const myField = [];
@@ -11,7 +11,7 @@ for (let i = 0; i < 10; i++) {
       id: `${i}${j}`,
       content: 'empty'
     }
-    myField.push(content) 
+    myField.push(content)
     enemyField.push(content)
   }
 }
@@ -24,8 +24,12 @@ const initialState = {
 function fields(state = initialState, action) {
   switch (action.type) {
 
-    case ADD_CHAT_MESSAGE_TO_STORE:
-      return {...state};
+    case CHANGE_CONTENT_FIELD_IN_STORE:
+      const indexOfChangedElement = state[action.fieldName].findIndex(element => element.id === action.id);
+      const newArray = [...state[action.fieldName].slice(0, indexOfChangedElement), { id: action.id, content: action.content }, ...state[action.fieldName].slice(indexOfChangedElement + 1)];
+      return {
+        ...state, [action.fieldName]: newArray
+      }
 
     default:
       return state;
