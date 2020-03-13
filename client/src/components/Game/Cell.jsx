@@ -5,19 +5,18 @@ import SvgEmpty from '../svg/SvgEmpty';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeContentFieldInStore } from '../../redux/actions/actionField';
+import { incrementCountShipsMyFieldInStore, decrementCountShipsMyFieldInStore } from '../../redux/actions/actionBegin';
 import styles from './Cell.module.scss';
 
 const Cell = (props) => {
 
-  const [state, setState] = useState('empty');
-
   const onClickToCell = () => {
-    if (state === 'empty') {
-      setState('ship');
+    if (props.content === 'empty') {
+      props.incrementCountShipsMyFieldInStore();
       props.changeContentFieldInStore('myField', props.id, 'ship')
     }
-    if (state === 'ship') {
-      setState('empty');
+    if (props.content === 'ship') {
+      props.decrementCountShipsMyFieldInStore();
       props.changeContentFieldInStore('myField', props.id, 'empty')
     }
   }
@@ -26,13 +25,14 @@ const Cell = (props) => {
     <div className={styles.cell} onClick={onClickToCell}>
       {props.content === 'ship' && <SvgShip />}
       {props.content === 'empty' && <SvgEmpty />}
-
     </div>
   )
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  changeContentFieldInStore
+  changeContentFieldInStore,
+  incrementCountShipsMyFieldInStore,
+  decrementCountShipsMyFieldInStore
 }, dispatch);
 
 

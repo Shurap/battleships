@@ -1,0 +1,110 @@
+@import '../../globalCSS/variables.scss';
+@import '../../globalCSS/mixins.scss';
+
+.LogInPage {
+  // border: 5px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  @include font(7vh, Hand)
+}
+
+.wrapperInputs {
+  // border: 5px solid red;
+  display: flex;
+  flex-direction: column;
+  
+  width: 70%;
+  max-width: 500px;
+}
+
+.wrapperSvg {
+  // border: 5px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapperText {
+  // border: 5px solid yellow;
+  @include font(60px, Hand);
+}
+
+.inputLogInPage {
+  // border: 3px solid $general-color;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 60%;
+  max-width: 450px;
+  position: absolute;
+  // @include font(7vh, Hand)
+  @include font(60px, Hand);
+}
+
+.buttonLogInPage {
+  border: 3px solid $general-color;
+  border-radius: 10px;
+  background: none;
+  outline: none;
+  margin-top: 3vh;
+  @include font(60px, Hand)
+}
+
+.buttonLogInPage:active {
+  border: 6px solid $general-color;
+}
+
+@media (max-width: 800px) {
+  .inputLogInPage {
+    font-size: 9vw;
+  }
+
+  .wrapperText {
+    font-size: 9vw;
+  }
+
+  .buttonLogInPage {
+    font-size: 9vw;
+  }
+
+}
+
+@media (max-height: 550px) {
+  .inputLogInPage {
+    font-size: 11vh;
+  }
+
+  .wrapperText {
+    font-size: 11vh;
+  }
+
+  .buttonLogInPage {
+    font-size: 11vh;
+  }
+
+  .inputLogInPage {
+    width: 70vh;
+  }
+
+  .wrapperText {
+    width: 80vh;
+    margin: auto;
+  }
+
+}
+
+@media (max-height: 300px) {
+  .inputLogInPage {
+    width: 60vh;
+  }
+}
+
+@media (max-height: 200px) {
+  .inputLogInPage {
+    width: 50vh;
+  }
+}

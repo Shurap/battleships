@@ -1,17 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+// import { connect } from 'react-redux';
 import { sendMessage } from '../socketio/socketio';
 import styles from './Chat.module.scss';
 
 const Chat = (props) => {
 
-  const [message, setMessage] = useState('');
-  const [nick, setNick] = useState('');
+  const nick = useSelector((state) => state.info.nick)
+  const room = useSelector((state) => state.info.room)
+  const messages = useSelector((state) => state.chat.messages)
 
-  const onNickChange = (e) => {
-    setNick(e.target.value)
-  }
+  const [message, setMessage] = useState('');
 
   const onTextChange = (e) => {
     setMessage(e.target.value)
@@ -22,8 +22,7 @@ const Chat = (props) => {
     setMessage('')
   }
 
-
-  const allChat = props.messages.map(({ nick, message }, index) => {
+  const allChat = messages.map(({ nick, message }, index) => {
     return (
       <div key={index}>
         <span style={{ color: "green" }}>{nick}: </span>
@@ -34,7 +33,7 @@ const Chat = (props) => {
 
   return (
     <div className={styles.chat}>
-      <input onChange={onNickChange} value={nick} />
+      <div>{`${nick} (${room})`}</div>
       <input onChange={onTextChange} value={message} />
       <button onClick={onMessageSubmit}>Send</button>
       <div>{allChat}</div>
@@ -42,8 +41,10 @@ const Chat = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  messages: state.chat.messages,
-});
+// const mapStateToProps = (state) => ({
+//   messages: state.chat.messages,
+// });
 
-export default connect(mapStateToProps, null)(Chat);
+// export default connect(mapStateToProps, null)(Chat);
+
+export default Chat;
