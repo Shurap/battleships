@@ -1,16 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import SvgEdit from '../svg/SvgEdit';
 import { createGame } from '../socketio/socketio';
-import styles from './LogInPage.module.scss';
+import styles from './PageLogIn.module.scss';
 
-const LogInPage = (props) => {
+const PageLogIn = (props) => {
 
   const [nick, setNick] = useState('');
   const [game, setGame] = useState('');
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const onNickChange = (e) => {
     setNick(e.target.value)
@@ -22,28 +22,28 @@ const LogInPage = (props) => {
 
   const onClickOk = () => {
     createGame(nick, game);
-    props.history.push('/game');
+    props.history.push('/begin');
   }
 
   return (
-    <div className={styles.LogInPage}>
+    <div className={styles.PageLogIn}>
       <div className={styles.wrapperInputs}>
 
         <div className={styles.wrapperText}>Nick:</div>
 
         <div className={styles.wrapperSvg}>
-          <input className={styles.inputLogInPage} onChange={onNickChange} value={nick} />
+          <input className={styles.inputPageLogIn} onChange={onNickChange} value={nick} />
           <SvgEdit />
         </div>
 
         <div className={styles.wrapperText}>Name of game:</div>
 
         <div className={styles.wrapperSvg}>
-          <input className={styles.inputLogInPage} onChange={onGameChange} value={game} />
+          <input className={styles.inputPageLogIn} onChange={onGameChange} value={game} />
           <SvgEdit />
         </div>
       </div>
-      <button className={styles.buttonLogInPage} onClick={onClickOk}>Ok</button>
+      <button className={styles.buttonPageLogIn} onClick={onClickOk}>Ok</button>
     </div>
   )
 }
@@ -55,4 +55,4 @@ const LogInPage = (props) => {
 
 // export default connect(mapStateToProps, null)(Game);
 
-export default LogInPage;
+export default PageLogIn;

@@ -18,7 +18,7 @@ const Chat = (props) => {
   }
 
   const onMessageSubmit = () => {
-    sendMessage({ nick, message })
+    sendMessage({ nick, room, message })
     setMessage('')
   }
 

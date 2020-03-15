@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Cell from './Cell';
+import Cell from './Cell/Cell';
 import SvgField from '../svg/SvgField'
 import styles from './Field.module.scss';
 

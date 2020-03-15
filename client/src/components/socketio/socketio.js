@@ -17,10 +17,16 @@ socket.on('connected to room', (info) => {
   store.dispatch(addInfoToStore(info));
 });
 
+
+
 export const sendMessage = (message) => {
   socket.emit("chat message", message);
 }
 
 export const createGame = (nick, game) => {
   socket.emit('create game', { nick, game })
+}
+
+export const sendMyField = (info, arrayMyField) => {
+  socket.emit('field', {info, arrayMyField});
 }

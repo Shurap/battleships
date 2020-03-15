@@ -1,0 +1,13 @@
+@import '../../globalCSS/mixins.scss';
+@import '../../globalCSS/variables.scss';
+
+.pageBegin {
+  @include test-border(red);
+  display: flex;
+}
+
+@media (max-width: 1000px) {
+  .pageBegin {
+    flex-wrap: wrap;
+  }
+}

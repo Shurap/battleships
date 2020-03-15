@@ -1,7 +1,7 @@
 @import '../../globalCSS/variables.scss';
 @import '../../globalCSS/mixins.scss';
 
-.LogInPage {
+.PageLogIn {
   // border: 5px solid green;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
   @include font(60px, Hand);
 }
 
-.inputLogInPage {
+.inputPageLogIn {
   // border: 3px solid $general-color;
   border: none;
   outline: none;
@@ -45,7 +45,7 @@
   @include font(60px, Hand);
 }
 
-.buttonLogInPage {
+.buttonPageLogIn {
   border: 3px solid $general-color;
   border-radius: 10px;
   background: none;
@@ -54,12 +54,12 @@
   @include font(60px, Hand)
 }
 
-.buttonLogInPage:active {
+.buttonPageLogIn:active {
   border: 6px solid $general-color;
 }
 
 @media (max-width: 800px) {
-  .inputLogInPage {
+  .inputPageLogIn {
     font-size: 9vw;
   }
 
@@ -67,14 +67,14 @@
     font-size: 9vw;
   }
 
-  .buttonLogInPage {
+  .buttonPageLogIn {
     font-size: 9vw;
   }
 
 }
 
 @media (max-height: 550px) {
-  .inputLogInPage {
+  .inputPageLogIn {
     font-size: 11vh;
   }
 
@@ -82,11 +82,11 @@
     font-size: 11vh;
   }
 
-  .buttonLogInPage {
+  .buttonPageLogIn {
     font-size: 11vh;
   }
 
-  .inputLogInPage {
+  .inputPageLogIn {
     width: 70vh;
   }
 
@@ -98,13 +98,13 @@
 }
 
 @media (max-height: 300px) {
-  .inputLogInPage {
+  .inputPageLogIn {
     width: 60vh;
   }
 }
 
 @media (max-height: 200px) {
-  .inputLogInPage {
+  .inputPageLogIn {
     width: 50vh;
   }
 }
