@@ -26,7 +26,11 @@ function fields(state = initialState, action) {
 
     case CHANGE_CONTENT_FIELD_IN_STORE:
       const indexOfChangedElement = state[action.fieldName].findIndex(element => element.id === action.id);
-      const newArray = [...state[action.fieldName].slice(0, indexOfChangedElement), { id: action.id, content: action.content }, ...state[action.fieldName].slice(indexOfChangedElement + 1)];
+      const newArray = [
+        ...state[action.fieldName].slice(0, indexOfChangedElement),
+        { id: action.id, content: action.content },
+        ...state[action.fieldName].slice(indexOfChangedElement + 1)
+      ];
       return {
         ...state, [action.fieldName]: newArray
       }

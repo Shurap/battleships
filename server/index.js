@@ -49,7 +49,6 @@ function connectToRoom(data) {
   } else {
     io.in(data.game).emit('terminal', 'Room is full!');//???????????
   }
-  // console.log('all:', allClients);
 }
 
 function disconnectClient() {
@@ -64,17 +63,16 @@ function disconnectClient() {
 
 function getClientArray(data) {
   allClients.forEach((element) => {
-    if (element.id === data.id) {
+    if (element.id === data.info.id) {
       element['array'] = data.arrayMyField;
     }
   });
-
   io.in(data.info.room).emit('terminal', `Player ${data.info.nick} ready to battle`);
-  if (this.adapter.rooms[data.info.room].length === 2) {
+  const clientsInRoom = allClients.filter((element) => element.room === data.info.room);
+  if ((clientsInRoom.length === 2) && clientsInRoom[0].hasOwnProperty('array') && clientsInRoom[1].hasOwnProperty('array')) {
     io.in(data.info.room).emit('terminal', `BATTLE!!!`);
     io.in(data.info.room).emit('begin battle');
+    io.in(clientsInRoom[0].id).emit('battle', 'turn');
+    io.in(clientsInRoom[1].id).emit('battle', 'wait');
   }
-
-  //console.log(data)
-  //console.log(this.adapter.rooms[data.info.room].length)
 }

@@ -1,13 +1,13 @@
 @import '../../globalCSS/mixins.scss';
 @import '../../globalCSS/variables.scss';
 
-.game {
+.pageGame {
   @include test-border(red);
   display: flex;
 }
 
 @media (max-width: 1000px) {
-  .game {
+  .pageGame {
     flex-wrap: wrap;
   }
 }
