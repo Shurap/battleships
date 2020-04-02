@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Field from '../Field/Field';
 import styles from './PageGame.module.scss';
 import Chat from '../Chat/Chat';
+import Button from '../Button/Button';
 // import SvgShip from '../svg/SvgShip'
 
 const PageGame = (props) => {
@@ -17,6 +18,7 @@ const PageGame = (props) => {
         array={props.enemyField}
         type={'enemyField'}
       />
+      <Button />
     </div>
   )
 }

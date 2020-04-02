@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  min-height: 600px;
   @include font(7vh, Hand)
 }
 
@@ -15,7 +16,6 @@
   // border: 5px solid red;
   display: flex;
   flex-direction: column;
-  
   width: 70%;
   max-width: 500px;
 }
@@ -34,77 +34,22 @@
 }
 
 .inputPageLogIn {
-  // border: 3px solid $general-color;
+  border: 3px solid $general-color;
   border: none;
   outline: none;
   background-color: transparent;
   width: 60%;
   max-width: 450px;
   position: absolute;
-  // @include font(7vh, Hand)
   @include font(60px, Hand);
-}
-
-.buttonPageLogIn {
-  border: 3px solid $general-color;
-  border-radius: 10px;
-  background: none;
-  outline: none;
-  margin-top: 3vh;
-  @include font(60px, Hand)
-}
-
-.buttonPageLogIn:active {
-  border: 6px solid $general-color;
 }
 
 @media (max-width: 800px) {
   .inputPageLogIn {
-    font-size: 9vw;
+    font-size: 8vw;
   }
 
   .wrapperText {
-    font-size: 9vw;
-  }
-
-  .buttonPageLogIn {
-    font-size: 9vw;
-  }
-
-}
-
-@media (max-height: 550px) {
-  .inputPageLogIn {
-    font-size: 11vh;
-  }
-
-  .wrapperText {
-    font-size: 11vh;
-  }
-
-  .buttonPageLogIn {
-    font-size: 11vh;
-  }
-
-  .inputPageLogIn {
-    width: 70vh;
-  }
-
-  .wrapperText {
-    width: 80vh;
-    margin: auto;
-  }
-
-}
-
-@media (max-height: 300px) {
-  .inputPageLogIn {
-    width: 60vh;
-  }
-}
-
-@media (max-height: 200px) {
-  .inputPageLogIn {
-    width: 50vh;
+    font-size: 8vw;
   }
 }

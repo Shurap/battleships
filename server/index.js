@@ -59,6 +59,7 @@ function disconnectClient() {
     io.in(disconnectedGamer.room).emit('terminal', `${disconnectedGamer.nick} disconnected`);
     allClients.splice(index, 1);
   }
+  console.log('after disconnect:', allClients)
 }
 
 function getClientArray(data) {

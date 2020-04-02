@@ -4,10 +4,12 @@
 .pageBegin {
   @include test-border(red);
   display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-@media (max-width: 1000px) {
-  .pageBegin {
-    flex-wrap: wrap;
-  }
-}
+// @media (max-width: 1000px) {
+//   .pageBegin {
+//     flex-wrap: wrap;
+//   }
+// }

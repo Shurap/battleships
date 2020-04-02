@@ -1,29 +1,28 @@
+.wrapperField {
+  border: 5px solid green;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  min-width: 200px;
+}
+
 .field {
-  // border: 5px solid blue;
+  border: 5px solid blue;
   position: relative;
-  margin: 20px;
   width: 100%;
-  height: 100%;
+  max-width: 70vh;
 }
 
 .wrapperLine {
   // border: 5px solid green;
-  padding: 4.5%;
   display: flex;
   flex-direction: column;
   position: absolute;
-  // top: 0;
-  // left: 0;
-  width: 91%;
-  height: 91%;
 }
 
 .line {
   // border: 5px solid gray;
-  height: 100%;
   display: flex;
-}
-
-.wrapperCell{
-  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,16 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
 import SvgEdit from '../svg/SvgEdit';
 import { createGame } from '../socketio/socketio';
 import styles from './PageLogIn.module.scss';
+import ButtonSubmit from './ButtonSubmit';
 
 const PageLogIn = (props) => {
-
+// TODO Check for empty edit
   const [nick, setNick] = useState('');
   const [game, setGame] = useState('');
-
-  // const dispatch = useDispatch()
 
   const onNickChange = (e) => {
     setNick(e.target.value)
@@ -42,17 +40,14 @@ const PageLogIn = (props) => {
           <input className={styles.inputPageLogIn} onChange={onGameChange} value={game} />
           <SvgEdit />
         </div>
+
+        <div className={styles.wrapperSvg}>
+          <ButtonSubmit click={onClickOk} />
+        </div>
       </div>
-      <button className={styles.buttonPageLogIn} onClick={onClickOk}>Ok</button>
+
     </div>
   )
 }
-
-// const mapStateToProps = (state) => ({
-//   myField: state.fields.myField,
-//   enemyField: state.fields.enemyField
-// });
-
-// export default connect(mapStateToProps, null)(Game);
 
 export default PageLogIn;
