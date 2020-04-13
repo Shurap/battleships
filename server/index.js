@@ -3,7 +3,41 @@ const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 
+
 const allClients = [];
+
+
+//-------------------------------------------------------
+const mongoose = require('mongoose');
+const Player = require('./models/player');
+mongoose.connect('mongodb://127.0.0.1:27017/players', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+
+db.on('error', function (err) {
+  console.log('connection error:', err.message);
+});
+db.once('open', function () {
+  console.log("MongoDB database connection established successfully");
+})
+
+// const newPlayer = Player({
+//   first: 'aaa',
+//   second: 'bbb'
+// });
+
+// newPlayer.save(function (err) {
+//   if (err) {
+//     console.log('eRRor')
+//     throw error;
+//   }
+//   console.log('user created')
+// })
+
+// Player.find(function (err, data) {
+//   console.log(data)
+// })
+//-------------------------------------------------------
+
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
@@ -17,6 +51,9 @@ app.get('/ping', function (req, res) {
   return res.send('pong');
 });
 
+
+const connectToRoom = require('./functions/connectToRoom')
+
 io.on("connection", socket => {
   //-----------------------------later delete
   // const { id } = socket.client;
@@ -25,31 +62,10 @@ io.on("connection", socket => {
   socket.on("chat message", (msg) => {
     io.in(msg.room).emit('chat message', msg);
   });
-  socket.on('create game', connectToRoom);
+  socket.on('create game', connectToRoom(io));
   socket.on('disconnect', disconnectClient);
   socket.on('field', getClientArray);
 });
-
-function connectToRoom(data) {
-  const newGamer = {
-    nick: data.nick,
-    id: this.id,
-    room: data.game
-  }
-  if (this.adapter.rooms[data.game] === undefined) {
-    this.join(data.game)
-    io.in(data.game).emit('connected to room', newGamer);
-    io.in(data.game).emit('terminal', `Game ${data.game} created! Waiting opponent...`);
-    allClients.push(newGamer);
-  } else if (this.adapter.rooms[data.game].length === 1) {
-    this.join(data.game)
-    io.to(this.id).emit('connected to room', newGamer);
-    io.in(data.game).emit('terminal', 'Two players connected');
-    allClients.push(newGamer);
-  } else {
-    io.in(data.game).emit('terminal', 'Room is full!');//???????????
-  }
-}
 
 function disconnectClient() {
   const value = (element) => element.id === this.id;
@@ -59,7 +75,7 @@ function disconnectClient() {
     io.in(disconnectedGamer.room).emit('terminal', `${disconnectedGamer.nick} disconnected`);
     allClients.splice(index, 1);
   }
-  console.log('after disconnect:', allClients)
+  // console.log('after disconnect:', allClients)
 }
 
 function getClientArray(data) {
@@ -77,3 +93,4 @@ function getClientArray(data) {
     io.in(clientsInRoom[1].id).emit('battle', 'wait');
   }
 }
+

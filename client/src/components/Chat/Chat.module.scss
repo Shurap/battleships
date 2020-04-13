@@ -2,5 +2,15 @@
 @import '../../globalCSS/variables.scss';
 
 .chat {
+  display: flex;
+  flex-direction: column;
   @include test-border($general-color);
+  height: 20vh;
+}
+
+.messages {
+  border: 1px solid red;
+  // max-height: 10vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }

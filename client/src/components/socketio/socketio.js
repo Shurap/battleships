@@ -15,8 +15,13 @@ socket.on('terminal', (message) => {
   store.dispatch(addChatMessageToStore({ nick: 'system', message }));
 });
 
+socket.on('error', (message) => {
+  console.log('error', message);
+});
+
 socket.on('connected to room', (info) => {
   store.dispatch(addInfoToStore(info));
+  history.push('/begin');
 });
 
 socket.on('begin battle', () => {

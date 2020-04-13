@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 // import { connect } from 'react-redux';
 import { sendMessage } from '../socketio/socketio';
 import styles from './Chat.module.scss';
+import { useEffect } from 'react';
 
 const Chat = (props) => {
 
@@ -12,6 +13,13 @@ const Chat = (props) => {
   const messages = useSelector((state) => state.chat.messages)
 
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    
+    const block = document.getElementById("messages");
+    block.scrollTop = block.scrollHeight;
+    // console.log('use', block)
+  })
 
   const onTextChange = (e) => {
     setMessage(e.target.value)
@@ -34,17 +42,13 @@ const Chat = (props) => {
   return (
     <div className={styles.chat}>
       <div>{`${nick} (${room})`}</div>
-      <input onChange={onTextChange} value={message} />
-      <button onClick={onMessageSubmit}>Send</button>
-      <div>{allChat}</div>
+      <div>
+        <input onChange={onTextChange} value={message} />
+        <button onClick={onMessageSubmit}>Send</button>
+      </div>
+      <div className={styles.messages} id='messages'>{allChat}</div>
     </div>
   )
 }
-
-// const mapStateToProps = (state) => ({
-//   messages: state.chat.messages,
-// });
-
-// export default connect(mapStateToProps, null)(Chat);
 
 export default Chat;

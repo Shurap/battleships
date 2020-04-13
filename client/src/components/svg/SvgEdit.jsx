@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SvgField.module.scss';
+import styles from './SvgEdit.module.scss';
 
 const SvgEdit = (props) => {
   return (

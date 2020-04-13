@@ -3,12 +3,14 @@ import { useState } from 'react';
 import SvgEdit from '../svg/SvgEdit';
 import { createGame } from '../socketio/socketio';
 import styles from './PageLogIn.module.scss';
-import ButtonSubmit from './ButtonSubmit';
+import Button from '../Button/Button';
 
 const PageLogIn = (props) => {
-// TODO Check for empty edit
+  // TODO Check for empty edit
   const [nick, setNick] = useState('');
   const [game, setGame] = useState('');
+
+  const state = (nick && game) ? true : false;
 
   const onNickChange = (e) => {
     setNick(e.target.value)
@@ -18,9 +20,9 @@ const PageLogIn = (props) => {
     setGame(e.target.value)
   }
 
-  const onClickOk = () => {
+  const onClickButton = () => {
     createGame(nick, game);
-    props.history.push('/begin');
+    // props.history.push('/begin');
   }
 
   return (
@@ -42,7 +44,11 @@ const PageLogIn = (props) => {
         </div>
 
         <div className={styles.wrapperSvg}>
-          <ButtonSubmit click={onClickOk} />
+          <Button
+            state={state}
+            name={'Start'}
+            click={onClickButton}
+          />
         </div>
       </div>
 
