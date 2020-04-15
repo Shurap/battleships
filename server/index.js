@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
+const connectToRoom = require('./functions/connectToRoom');
 
 
 const allClients = [];
@@ -10,7 +11,7 @@ const allClients = [];
 //-------------------------------------------------------
 const mongoose = require('mongoose');
 const Player = require('./models/player');
-mongoose.connect('mongodb://127.0.0.1:27017/players', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://127.0.0.1:27017/players', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 const db = mongoose.connection;
 
 db.on('error', function (err) {
@@ -19,25 +20,6 @@ db.on('error', function (err) {
 db.once('open', function () {
   console.log("MongoDB database connection established successfully");
 })
-
-// const newPlayer = Player({
-//   first: 'aaa',
-//   second: 'bbb'
-// });
-
-// newPlayer.save(function (err) {
-//   if (err) {
-//     console.log('eRRor')
-//     throw error;
-//   }
-//   console.log('user created')
-// })
-
-// Player.find(function (err, data) {
-//   console.log(data)
-// })
-//-------------------------------------------------------
-
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
@@ -51,9 +33,6 @@ app.get('/ping', function (req, res) {
   return res.send('pong');
 });
 
-
-const connectToRoom = require('./functions/connectToRoom')
-
 io.on("connection", socket => {
   //-----------------------------later delete
   // const { id } = socket.client;
@@ -63,6 +42,7 @@ io.on("connection", socket => {
     io.in(msg.room).emit('chat message', msg);
   });
   socket.on('create game', connectToRoom(io));
+  //--------------------------------------------
   socket.on('disconnect', disconnectClient);
   socket.on('field', getClientArray);
 });

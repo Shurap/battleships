@@ -1,71 +1,51 @@
-
+//TODO Make showing error in front
 const Player = require('../models/player');
 
 function connectToRoom(io) {
 
-  return function ({ nick, game }) {
+  return function ({ nick, gameName }) {
 
     const socketId = this.id;
 
     const newPlayer = Player({
       socketId: socketId,
       nick: nick,
-      room: game,
+      room: gameName,
       field: [],
       opponent: ''
     });
 
-    if (this.adapter.rooms[game] === undefined) {
-      this.join(game, () => {
+    if (this.adapter.rooms[gameName] === undefined) {
+      this.join(gameName, () => {
 
         newPlayer.save(function (err) {
-          if (err) {
-            throw error;
-          }
+          if (err) throw error;
         })
 
-        io.in(game).emit('connected to room', newPlayer);
-        io.in(game).emit('terminal', `Game ${game} created! Waiting opponent...`);
+        io.in(gameName).emit('connected to room', newPlayer);
+        io.in(gameName).emit('terminal', `gameName ${gameName} created! Waiting opponent...`);
       })
 
-    } else if (this.adapter.rooms[game].length === 1) {
-      this.join(game, async function () {
+    } else if (this.adapter.rooms[gameName].length === 1) {
+      this.join(gameName, async function () {
 
         await newPlayer.save(function (err) {
-          if (err) {
-            throw error;
-          }
+          if (err) throw error;
         })
 
+        const query = Player.find({ 'room': gameName });
+        const playerSecond = query.find({ 'socketId': socketId })
+        query.findOneAndUpdate({ 'socketId': { $ne: socketId } }, { opponent: socketId }, { new: true })
+          .then((data) => {
+            playerSecond.updateOne({ 'socketId': socketId }, { opponent: data.socketId })
+              .then(() => { }) //TODO Set here error
+          });
 
-
-        //----------------------
-        //   console.log(socketId)
-        //   const query = Player.find({ 'socketId': socketId });
-        //   query.select('nick');
-
-        //   query.exec(function(err, data){
-
-        //     console.log(data)
-        // })
-
-        Player.updateOne({ 'socketId': socketId }, { opponent: socketId }, function (err, result) {
-
-          // mongoose.disconnect();
-          if (err) return console.log(err);
-          console.log(result);
-        });
-        console.log('test')
-
-
-        
-        //-------------------------
-
-        io.to(this.id).emit('connected to room', newPlayer);
-        io.in(game).emit('terminal', 'Two players connected');
+        io.to(socketId).emit('connected to room', newPlayer);
+        io.in(gameName).emit('terminal', 'Two players connected');
       })
     } else {
-      io.in(this.id).emit('error', 'Room is full!');//???????????
+      io.in(socketId).emit('error', 'Room is full!');//???????????
     }
   }
 }

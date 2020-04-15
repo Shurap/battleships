@@ -38,8 +38,8 @@ export const sendMessage = (message) => {
   socket.emit("chat message", message);
 }
 
-export const createGame = (nick, game) => {
-  socket.emit('create game', { nick, game })
+export const createGame = (nick, gameName) => {
+  socket.emit('create game', { nick, gameName })
 }
 
 export const sendMyField = (info, arrayMyField) => {
