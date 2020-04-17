@@ -20,6 +20,7 @@ socket.on('error', (message) => {
 });
 
 socket.on('connected to room', (info) => {
+  console.log(info)
   store.dispatch(addInfoToStore(info));
   history.push('/begin');
 });

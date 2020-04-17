@@ -4,9 +4,11 @@ import {
 } from '../constants';
 
 const initialState = {
-  id: '',
+  socketId:'',
+  dbId: '',
   nick: '',
-  room: ''
+  room: '',
+  opponent: ''
 };
 
 function info(state = initialState, action) {
@@ -15,9 +17,11 @@ function info(state = initialState, action) {
     case ADD_INFO_TO_STORE:
       return {
         ...state,
-        id: action.data.id,
+        socketId: action.data.socketId,
+        dbId: action.data._id,
         nick: action.data.nick,
-        room: action.data.room
+        room: action.data.room,
+        opponent: action.data.opponent,
       };
 
     default:

@@ -21,9 +21,8 @@ function connectToRoom(io) {
         newPlayer.save(function (err) {
           if (err) throw error;
         })
-
-        io.in(gameName).emit('connected to room', newPlayer);
-        io.in(gameName).emit('terminal', `gameName ${gameName} created! Waiting opponent...`);
+        io.to(gameName).emit('connected to room', newPlayer);
+        io.in(gameName).emit('terminal', `Game ${gameName} created! Waiting opponent...`);
       })
 
     } else if (this.adapter.rooms[gameName].length === 1) {
@@ -36,12 +35,13 @@ function connectToRoom(io) {
         const query = Player.find({ 'room': gameName });
         const playerSecond = query.find({ 'socketId': socketId })
         query.findOneAndUpdate({ 'socketId': { $ne: socketId } }, { opponent: socketId }, { new: true })
-          .then((data) => {
-            playerSecond.updateOne({ 'socketId': socketId }, { opponent: data.socketId })
-              .then(() => { }) //TODO Set here error
+          .then((firstPlayer) => {
+            io.to(firstPlayer.socketId).emit('connected to room', firstPlayer);
+            playerSecond.findOneAndUpdate({ 'socketId': socketId }, { opponent: firstPlayer.socketId })
+              .then((secondPlayer) => {
+                io.to(secondPlayer.socketId).emit('connected to room', secondPlayer);
+              }) //TODO Set here error
           });
-
-        io.to(socketId).emit('connected to room', newPlayer);
         io.in(gameName).emit('terminal', 'Two players connected');
       })
     } else {

@@ -2,7 +2,7 @@
 @import '../../globalCSS/variables.scss';
 
 .pageBegin {
-  @include test-border(red);
+  // @include test-border(red);
   display: flex;
   flex-direction: column;
   height: 100vh;

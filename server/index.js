@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
+
 const connectToRoom = require('./functions/connectToRoom');
+const disconnectClient = require('./functions/disconnectClient');
+const getClientArray = require('./functions/getClientArray');
 
 
 const allClients = [];
@@ -42,35 +45,24 @@ io.on("connection", socket => {
     io.in(msg.room).emit('chat message', msg);
   });
   socket.on('create game', connectToRoom(io));
+  socket.on('disconnect', disconnectClient(io));
   //--------------------------------------------
-  socket.on('disconnect', disconnectClient);
-  socket.on('field', getClientArray);
+  socket.on('field', getClientArray(io));
 });
 
-function disconnectClient() {
-  const value = (element) => element.id === this.id;
-  const disconnectedGamer = allClients.find(value);
-  const index = allClients.indexOf(disconnectedGamer);
-  if (disconnectedGamer) {
-    io.in(disconnectedGamer.room).emit('terminal', `${disconnectedGamer.nick} disconnected`);
-    allClients.splice(index, 1);
-  }
-  // console.log('after disconnect:', allClients)
-}
-
-function getClientArray(data) {
-  allClients.forEach((element) => {
-    if (element.id === data.info.id) {
-      element['array'] = data.arrayMyField;
-    }
-  });
-  io.in(data.info.room).emit('terminal', `Player ${data.info.nick} ready to battle`);
-  const clientsInRoom = allClients.filter((element) => element.room === data.info.room);
-  if ((clientsInRoom.length === 2) && clientsInRoom[0].hasOwnProperty('array') && clientsInRoom[1].hasOwnProperty('array')) {
-    io.in(data.info.room).emit('terminal', `BATTLE!!!`);
-    io.in(data.info.room).emit('begin battle');
-    io.in(clientsInRoom[0].id).emit('battle', 'turn');
-    io.in(clientsInRoom[1].id).emit('battle', 'wait');
-  }
-}
+// function getClientArray(data) {
+//   allClients.forEach((element) => {
+//     if (element.id === data.info.id) {
+//       element['array'] = data.arrayMyField;
+//     }
+//   });
+//   io.in(data.info.room).emit('terminal', `Player ${data.info.nick} ready to battle`);
+//   const clientsInRoom = allClients.filter((element) => element.room === data.info.room);
+//   if ((clientsInRoom.length === 2) && clientsInRoom[0].hasOwnProperty('array') && clientsInRoom[1].hasOwnProperty('array')) {
+//     io.in(data.info.room).emit('terminal', `BATTLE!!!`);
+//     io.in(data.info.room).emit('begin battle');
+//     io.in(clientsInRoom[0].id).emit('battle', 'turn');
+//     io.in(clientsInRoom[1].id).emit('battle', 'wait');
+//   }
+// }
 
