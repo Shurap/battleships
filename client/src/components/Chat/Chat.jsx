@@ -19,6 +19,7 @@ const Chat = (props) => {
     const block = document.getElementById("messages");
     block.scrollTop = block.scrollHeight;
     // console.log('use', block)
+    //TODO ref
   })
 
   const onTextChange = (e) => {
