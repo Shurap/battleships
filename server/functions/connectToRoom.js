@@ -59,13 +59,3 @@ function connectToRoom(io) {
 }
 
 module.exports = connectToRoom;
-
-
-        // query.findOneAndUpdate({ 'socketId': { $ne: socketId } }, { opponent: socketId }, { new: true })
-        //   .then((firstPlayer) => {
-        //     io.to(firstPlayer.socketId).emit('connected to room', firstPlayer);
-        //     playerSecond.findOneAndUpdate({ 'socketId': socketId }, { opponent: firstPlayer.socketId })
-        //       .then((secondPlayer) => {
-        //         io.to(secondPlayer.socketId).emit('connected to room', secondPlayer);
-        //       }) 
-        //   });

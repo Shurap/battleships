@@ -14,7 +14,7 @@ function getClientArray(io) {
     const values = field.map((element) => {
       return element.field.length
     });
-    
+
     if (values[0] && values[1]) {
       io.in(info.room).emit('terminal', `BATTLE!!!`);
       io.in(info.room).emit('begin battle');
@@ -27,49 +27,6 @@ function getClientArray(io) {
   }
 }
 module.exports = getClientArray;
-
-
-
-      // console.log(firstId, secondId[0].opponent);
-
-
-
-      // Player.findByIdAndUpdate({ _id: info.dbId }, { field: arrayMyField })
-      //   .then(() => {
-      //     Player.find({ 'room': info.room }, 'field')
-      //       .then((data) => {
-      //         const values = data.map((element) => {
-      //           return element.field.length
-      //         })
-      //         if (values[0] && values[1]) {
-      //           io.in(info.room).emit('terminal', `BATTLE!!!`);
-      //           io.in(info.room).emit('begin battle');
-
-      //           // io.in(clientsInRoom[0].id).emit('battle', 'turn');
-      //           // io.in(clientsInRoom[1].id).emit('battle', 'wait');
-      //         }
-      //       })
-      //   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // let userRead = async (userID) => {
 

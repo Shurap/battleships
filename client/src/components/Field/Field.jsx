@@ -19,7 +19,7 @@ const Field = (props) => {
   });
 
   return (
-    <div className={styles.wrapperField}>
+    // <div className={styles.wrapperField}>
       <div className={styles.field}>
         <div className={styles.wrapperLine}>
           <div className={styles.line}>{cells.slice(0, 10)}</div>
@@ -36,7 +36,7 @@ const Field = (props) => {
 
         <SvgField />
       </div>
-    </div>
+    // </div>
   )
 }
 

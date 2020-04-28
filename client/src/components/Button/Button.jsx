@@ -7,7 +7,7 @@ import { sleep } from '../common/sleep';
 import styles from './Button.module.scss';
 
 const Button = (props) => {
-
+//TODO make with defaultProps width, height
   const [statePress, setStatePress] = useState(false);
 
   const turn = useSelector((state) => state.condition.turn)
@@ -22,7 +22,7 @@ const Button = (props) => {
 
   const activeButton = (
     <div className={styles.button} onClick={onClick}>
-      <div className={styles.wrapperText}>
+      <div className={(statePress) ? styles.wrapperTextDown : styles.wrapperTextUp}>
         Start
       </div>
       {(statePress) ? <SvgButtonDown /> : <SvgButtonUp />}
@@ -31,7 +31,7 @@ const Button = (props) => {
 
   const passiveButton = (
     <div className={styles.button}>
-      <div className={styles.wrapperText} style={{ color: '#858585' }}>
+      <div className={styles.wrapperTextUp} style={{ color: '#858585' }}>
         Start
       </div>
       <SvgButtonUp color={'#858585'} />
@@ -44,4 +44,7 @@ const Button = (props) => {
     </div>
   )
 }
+
+// Button.defaultProps = { width: '300px', height: '150px' }
+
 export default Button;

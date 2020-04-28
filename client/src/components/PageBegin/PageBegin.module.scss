@@ -2,9 +2,10 @@
 @import '../../globalCSS/variables.scss';
 
 .pageBegin {
-  // @include test-border(red);
+  // @include test-border(yellow);
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
   // @include font(60px, Hand);
 }

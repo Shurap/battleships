@@ -1,3 +1,5 @@
+@import '../../globalCSS/mixins.scss';
+
 .button {
   // border: 5px solid green;
   display: flex;
@@ -6,9 +8,22 @@
   width: 300px;
   height: 150px;
   cursor: pointer;
+  @include font(8vh, Hand);
+  position: relative;
+
+  // -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+-webkit-tap-highlight-color: transparent;
 }
 
-.wrapperText {
+.wrapperTextUp {
+  // border: 1px solid yellow;
+  top: 10%;
+  position: absolute;
+}
+
+.wrapperTextDown {
+  // border: 1px solid blue;
+  top: 20%;
   position: absolute;
 }
 
@@ -17,7 +32,10 @@
     width: 40vw;
     height: 20vw;
   }
-  .wrapperText {
+  .wrapperTextUp {
+    font-size: 8vw;
+  }
+  .wrapperTextDown {
     font-size: 8vw;
   }
 }

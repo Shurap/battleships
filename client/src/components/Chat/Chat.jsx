@@ -1,13 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-// import { connect } from 'react-redux';
-import { sendMessage } from '../socketio/socketio';
-import styles from './Chat.module.scss';
 import { useEffect } from 'react';
+import styles from './Chat.module.scss';
+import { useSelector } from 'react-redux';
+import { sendMessage } from '../socketio/socketio';
 
 const Chat = (props) => {
-
+//TODO button and edit get small
   const nick = useSelector((state) => state.info.nick)
   const room = useSelector((state) => state.info.room)
   const messages = useSelector((state) => state.chat.messages)
@@ -43,11 +42,11 @@ const Chat = (props) => {
   return (
     <div className={styles.chat}>
       <div>{`${nick} (${room})`}</div>
-      <div>
-        <input onChange={onTextChange} value={message} />
+      <div className={styles.messages} id='messages'>{allChat}</div>
+      <div className={styles.wrapperSend}>
+        <input className={styles.inputChat} onChange={onTextChange} value={message} />
         <button onClick={onMessageSubmit}>Send</button>
       </div>
-      <div className={styles.messages} id='messages'>{allChat}</div>
     </div>
   )
 }
