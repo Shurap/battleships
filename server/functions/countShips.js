@@ -7,8 +7,50 @@ function countShips(cellId, arrayIn) {
     return !(i % 10) ? prev.concat([a.slice(i, i + 10)]) : prev
   }, []);
 
-  // console.log('array', arrayOut[0][9])
-
+  //-------------------------------------------------
+  let count = 0;
+//vertical
+  for (let i = 0; i < 10; i++) {
+    if (i !== +coordX) {
+      if ((arrayOut[i][coordY].content === 'ship') || (arrayOut[i][coordY].content === 'wreck')) count++;
+    }
+  }
+//horizontal
+  for (let i = 0; i < 10; i++) {
+    if (i !== +coordY) {
+      if ((arrayOut[coordX][i].content === 'ship') || (arrayOut[coordX][i].content === 'wreck')) count++;
+    }
+  }
+  let i = coordX;
+  let j = coordY;
+  while ((i < 9) && (j < 9)) {
+    i++;
+    j++;
+    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'wreck')) count++;
+  }
+  i = coordX;
+  j = coordY;
+  while ((i > 0) && (j > 0)) {
+    i--;
+    j--;
+    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'wreck')) count++;
+  }
+  i = coordX;
+  j = coordY;
+  while ((i < 9) && (j > 0)) {
+    i++;
+    j--;
+    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'wreck')) count++;
+  }
+  i = coordX;
+  j = coordY;
+  while ((i > 0) && (j < 9)) {
+    i--;
+    j++;
+    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'wreck')) count++;
+  }
+  return count;
+  //----------------------------------------------
 }
 
 module.exports = countShips;

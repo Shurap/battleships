@@ -29,7 +29,8 @@ function onShoot(io) {
     }
 
     if (arrayPlayerWhoTarget[indexCell].content === 'empty') {
-      countShips(cellId, arrayPlayerWhoTarget)
+      const count = countShips(cellId, arrayPlayerWhoTarget);
+      io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, count);
     }
 
 
