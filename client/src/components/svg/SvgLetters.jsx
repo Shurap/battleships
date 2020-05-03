@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SvgLetters.module.scss';
 
-const SvgLetters = (props) => {
+const SvgLetters = () => {
   return (
     <svg className={styles.svg} x="0px" y="0px" viewBox="200 -600 10 700" >
       <path className={styles.path} strokeWidth="50"

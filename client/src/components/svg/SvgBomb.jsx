@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SvgAim.module.scss';
 
-const SvgBomb = (props) => {
+const SvgBomb = () => {
   return (
     <svg className={styles.svg} x="0px" y="0px" viewBox="0 0 400 400" >
       <path className={styles.path} strokeWidth="10"

@@ -7,7 +7,7 @@ import styles from './PageBegin.module.scss';
 import { sendMyField } from '../socketio/socketio';
 import { changeGamePhaseInStore } from '../../redux/actions/actionCondition';
  
-const PageBegin = (props) => {
+const PageBegin = () => {
 
   const dispatch = useDispatch()
 

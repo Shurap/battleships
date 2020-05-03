@@ -5,7 +5,7 @@ import { createGame } from '../socketio/socketio';
 import styles from './PageLogIn.module.scss';
 import Button from '../Button/Button';
 
-const PageLogIn = (props) => {
+const PageLogIn = () => {
   // TODO Check for empty edit
   const [nick, setNick] = useState('');
   const [game, setGame] = useState('');

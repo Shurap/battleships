@@ -6,6 +6,7 @@ const io = require("socket.io")(server);
 const connectToRoom = require('./functions/connectToRoom');
 const disconnectClient = require('./functions/disconnectClient');
 const getClientArray = require('./functions/getClientArray');
+const onShoot = require('./functions/onShoot');
 
 const mongoose = require('mongoose');
 const Player = require('./models/player');
@@ -16,7 +17,7 @@ db.on('error', function (err) {
   console.log('connection error:', err.message);
 });
 db.once('open', function () {
-  console.log("MongoDB database connection established successfully");
+  console.log("MongoDB database connected successfully!!!");
 })
 
 const PORT = process.env.PORT || 5000;
@@ -42,4 +43,5 @@ io.on("connection", socket => {
   socket.on('create game', connectToRoom(io));
   socket.on('disconnect', disconnectClient(io));
   socket.on('field', getClientArray(io));
+  socket.on('shoot', onShoot(io));
 });

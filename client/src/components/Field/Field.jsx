@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Cell from '../Cell/Cell';
 import SvgField from '../svg/SvgField'
 import styles from './Field.module.scss';
+import PropTypes from 'prop-types';
 
 const Field = (props) => {
 
@@ -38,6 +38,11 @@ const Field = (props) => {
       </div>
     // </div>
   )
+}
+
+Field.propTypes = {
+  array: PropTypes.array,
+  type: PropTypes.string
 }
 
 export default Field;

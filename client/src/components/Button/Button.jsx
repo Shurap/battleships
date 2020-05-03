@@ -5,9 +5,10 @@ import SvgButtonUp from '../svg/SvgButtonUp';
 import SvgButtonDown from '../svg/SvgButtonDown';
 import { sleep } from '../common/sleep';
 import styles from './Button.module.scss';
+import PropTypes from 'prop-types';
 
 const Button = (props) => {
-//TODO make with defaultProps width, height
+  //TODO make with defaultProps width, height
   const [statePress, setStatePress] = useState(false);
 
   const turn = useSelector((state) => state.condition.turn)
@@ -23,7 +24,7 @@ const Button = (props) => {
   const activeButton = (
     <div className={styles.button} onClick={onClick}>
       <div className={(statePress) ? styles.wrapperTextDown : styles.wrapperTextUp}>
-        Start
+        {props.name}
       </div>
       {(statePress) ? <SvgButtonDown /> : <SvgButtonUp />}
     </div>
@@ -32,7 +33,7 @@ const Button = (props) => {
   const passiveButton = (
     <div className={styles.button}>
       <div className={styles.wrapperTextUp} style={{ color: '#858585' }}>
-        Start
+        {props.name}
       </div>
       <SvgButtonUp color={'#858585'} />
     </div>
@@ -46,5 +47,11 @@ const Button = (props) => {
 }
 
 // Button.defaultProps = { width: '300px', height: '150px' }
+
+Button.propTypes = {
+  name: PropTypes.string,
+  state: PropTypes.bool,
+  click: PropTypes.func
+}
 
 export default Button;

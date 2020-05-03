@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SvgButtonDown.module.scss';
 
-const SvgButtonDown = (props) => {
+const SvgButtonDown = () => {
   return (
     <svg className={styles.svg} x="0px" y="0px" viewBox="0 0 500 250" >
       <path className={styles.path} strokeWidth="5"

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './SvgButtonUp.module.scss';
+import PropTypes from 'prop-types';
 
 const SvgButtonUp = (props) => {
 	return (
@@ -57,5 +58,9 @@ const SvgButtonUp = (props) => {
 }
 
 SvgButtonUp.defaultProps = {color: '#8b00ff'};
+
+SvgButtonUp.propTypes = {
+  color: PropTypes.string
+}
 
 export default SvgButtonUp;

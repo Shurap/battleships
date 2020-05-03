@@ -3,6 +3,7 @@ import { addChatMessageToStore } from '../../redux/actions/actionChat'
 import store from '../../redux/store'
 import { addInfoToStore } from '../../redux/actions/actionInfo';
 import { changeGamePhaseInStore, changeTurnInStore } from '../../redux/actions/actionCondition';
+import { changeContentFieldInStore } from '../../redux/actions/actionField';
 import history from '../common/history'
 
 const socket = io.connect("http://localhost:5000");
@@ -17,10 +18,10 @@ socket.on('terminal', (message) => {
 
 socket.on('error', (message) => {
   console.log('error', message);
+  // TODO make error message
 });
 
 socket.on('connected to room', (info) => {
-  console.log(info)
   store.dispatch(addInfoToStore(info));
   history.push('/begin');
 });
@@ -33,6 +34,11 @@ socket.on('begin battle', () => {
 socket.on('battle', (data) => {
   store.dispatch(changeTurnInStore(data))
 });
+
+socket.on('result shoot', (id, content) => {
+  console.log('data:', id, content)
+  store.dispatch(changeContentFieldInStore('enemyField', id, content));
+})
 
 
 export const sendMessage = (message) => {
@@ -47,3 +53,6 @@ export const sendMyField = (info, arrayMyField) => {
   socket.emit('field', { info, arrayMyField });
 }
 
+export const sendShoot = (player, cellId) => {
+  socket.emit('shoot', { player, cellId });
+}

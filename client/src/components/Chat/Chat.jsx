@@ -5,7 +5,7 @@ import styles from './Chat.module.scss';
 import { useSelector } from 'react-redux';
 import { sendMessage } from '../socketio/socketio';
 
-const Chat = (props) => {
+const Chat = () => {
 //TODO button and edit get small
   const nick = useSelector((state) => state.info.nick)
   const room = useSelector((state) => state.info.room)

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SvgEdit.module.scss';
 
-const SvgEdit = (props) => {
+const SvgEdit = () => {
   return (
     <svg className={styles.svg} x="0px" y="0px" viewBox="0 0 500 100" >
       <path className={styles.path} strokeWidth="3"
