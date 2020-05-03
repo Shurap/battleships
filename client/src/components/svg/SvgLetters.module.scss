@@ -1,0 +1,30 @@
+@import '../../globalCSS/variables.scss';
+
+.svg {
+  border: 1px solid black;
+  // padding: 10%;
+  width: 100px;
+  height: 200px;
+}
+
+.path {
+  fill: rgba(10, 10, 10, 0.0);
+  stroke: $general-color;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+  animation: dash 3s .3s linear forwards;
+  transform: scale(1, -1);
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 5000;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}

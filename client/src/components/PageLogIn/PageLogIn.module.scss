@@ -1,0 +1,55 @@
+@import '../../globalCSS/variables.scss';
+@import '../../globalCSS/mixins.scss';
+
+.PageLogIn {
+  // border: 5px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-height: 600px;
+  @include font(7vh, Hand)
+}
+
+.wrapperInputs {
+  // border: 5px solid red;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-width: 500px;
+}
+
+.wrapperSvg {
+  // border: 5px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapperText {
+  // border: 5px solid yellow;
+  @include font(60px, Hand);
+}
+
+.inputPageLogIn {
+  // border: 3px solid $general-color;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 60%;
+  max-width: 450px;
+  position: absolute;
+  @include font(60px, Hand);
+}
+
+@media (max-width: 800px) {
+  .inputPageLogIn {
+    font-size: 8vw;
+  }
+
+  .wrapperText {
+    font-size: 8vw;
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SvgShip.module.scss';
 
-const SvgShip = (props) => {
+const SvgShip = () => {
   return (
     <svg className={styles.svg} x="0px" y="0px" viewBox="0 0 400 237" >
       <path className={styles.path} strokeWidth="10"

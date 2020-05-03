@@ -2,5 +2,40 @@
 @import '../../globalCSS/variables.scss';
 
 .chat {
-  @include test-border($general-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // @include test-border($general-color);
+  // border: 2px solid blue;
+  height: 20%;
+  min-height: 120px;
+  // max-height: 120px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 3%;
+
+  @include font(2vh, Hand)
+}
+
+.messages {
+  // border: 2px solid green;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  // min-height: 40px;
+}
+
+.inputChat {
+  border: 3px solid $general-color;
+  // border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  min-height: 20px;
+  @include font(2vh, Hand)
+}
+
+.wrapperSend {
+  // border: 2px solid red;
+  display: flex;
+  min-height: 20px;
 }

@@ -1,29 +1,36 @@
 import React from 'react';
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { sendMessage } from '../socketio/socketio';
+import { useEffect } from 'react';
 import styles from './Chat.module.scss';
+import { useSelector } from 'react-redux';
+import { sendMessage } from '../socketio/socketio';
 
-const Chat = (props) => {
+const Chat = () => {
+//TODO button and edit get small
+  const nick = useSelector((state) => state.info.nick)
+  const room = useSelector((state) => state.info.room)
+  const messages = useSelector((state) => state.chat.messages)
 
   const [message, setMessage] = useState('');
-  const [nick, setNick] = useState('');
 
-  const onNickChange = (e) => {
-    setNick(e.target.value)
-  }
+  useEffect(() => {
+    
+    const block = document.getElementById("messages");
+    block.scrollTop = block.scrollHeight;
+    // console.log('use', block)
+    //TODO ref
+  })
 
   const onTextChange = (e) => {
     setMessage(e.target.value)
   }
 
   const onMessageSubmit = () => {
-    sendMessage({ nick, message })
+    sendMessage({ nick, room, message })
     setMessage('')
   }
 
-
-  const allChat = props.messages.map(({ nick, message }, index) => {
+  const allChat = messages.map(({ nick, message }, index) => {
     return (
       <div key={index}>
         <span style={{ color: "green" }}>{nick}: </span>
@@ -34,16 +41,14 @@ const Chat = (props) => {
 
   return (
     <div className={styles.chat}>
-      <input onChange={onNickChange} value={nick} />
-      <input onChange={onTextChange} value={message} />
-      <button onClick={onMessageSubmit}>Send</button>
-      <div>{allChat}</div>
+      <div>{`${nick} (${room})`}</div>
+      <div className={styles.messages} id='messages'>{allChat}</div>
+      <div className={styles.wrapperSend}>
+        <input className={styles.inputChat} onChange={onTextChange} value={message} />
+        <button onClick={onMessageSubmit}>Send</button>
+      </div>
     </div>
   )
 }
 
-const mapStateToProps = (state) => ({
-  messages: state.chat.messages,
-});
-
-export default connect(mapStateToProps, null)(Chat);
+export default Chat;
