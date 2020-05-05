@@ -14,11 +14,11 @@ export const usePicture = (props) => {
     if (props.type === 'myField' && conditionGame === 'begin') {
       if (props.content === 'empty' && countShips !== 5) {
         dispatch(incrementCountShipsMyFieldInStore());
-        dispatch(changeContentFieldInStore('myField', props.id, 'ship'));
+        dispatch(changeContentFieldInStore('myField', props.id, 'ship', ''));
       }
       if (props.content === 'ship') {
         dispatch(decrementCountShipsMyFieldInStore());
-        dispatch(changeContentFieldInStore('myField', props.id, 'empty'));
+        dispatch(changeContentFieldInStore('myField', props.id, 'empty', ''));
       }
     }
 
@@ -30,19 +30,19 @@ export const usePicture = (props) => {
               element.content = 'empty';
             }
           })
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'aim'));
+          dispatch(changeContentFieldInStore('enemyField', props.id, 'aim', ''));
           break;
         }
         case 'aim': {
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'none'));
+          dispatch(changeContentFieldInStore('enemyField', props.id, 'none', ''));
           break;
         }
         case 'none': {
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'bomb'));
+          dispatch(changeContentFieldInStore('enemyField', props.id, 'bomb', ''));
           break;
         }
         case 'bomb': {
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'empty'));
+          dispatch(changeContentFieldInStore('enemyField', props.id, 'empty', ''));
           break;
         }
       }

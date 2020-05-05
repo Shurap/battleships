@@ -35,9 +35,9 @@ socket.on('battle', (data) => {
   store.dispatch(changeTurnInStore(data))
 });
 
-socket.on('result shoot', (id, content) => {
-  console.log('data:', id, content)
-  store.dispatch(changeContentFieldInStore('enemyField', id, content));
+socket.on('result shoot', (id, content, count) => {
+ // if (content === 'kill')
+  store.dispatch(changeContentFieldInStore('enemyField', id, content, count));
 })
 
 

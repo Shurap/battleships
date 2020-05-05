@@ -23,14 +23,15 @@ function onShoot(io) {
         { 'socketId': PlayerWhoTargetSocketId },
         { field: arrayPlayerWhoTarget },
         () => {
-          io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, 'kill');
+          const count = countShips(cellId, arrayPlayerWhoTarget);
+          io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, 'kill', count);
         }
       );
     }
 
     if (arrayPlayerWhoTarget[indexCell].content === 'empty') {
       const count = countShips(cellId, arrayPlayerWhoTarget);
-      io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, count);
+      io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, 'miss', count);
     }
 
 

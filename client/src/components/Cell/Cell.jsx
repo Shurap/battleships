@@ -24,6 +24,7 @@ const Cell = (props) => {
       {props.content === 'none' && <SvgNone />}
       {props.content === 'bomb' && <SvgBomb />}
       {props.content === 'kill' && <SvgDownShip />}
+      {props.content === 'miss' && <SvgEmpty />}
     </div>
   )
 }
