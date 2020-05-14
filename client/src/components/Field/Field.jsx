@@ -12,6 +12,7 @@ const Field = (props) => {
         <Cell
           id={element.id}
           content={element.content}
+          count={element.count}
           type={props.type}
         />
       </div>
