@@ -1,5 +1,6 @@
 const Player = require('../models/player');
 const countShips = require('./countShips');
+const { SHIP, KILL, EMPTY, MISS} = require('../constants');
 
 function onShoot(io) {
 
@@ -16,22 +17,22 @@ function onShoot(io) {
     }
     const indexCell = arrayPlayerWhoTarget.findIndex(isCell);
 
-    if (arrayPlayerWhoTarget[indexCell].content === 'ship') {
-      arrayPlayerWhoTarget[indexCell].content = 'kill';
+    if (arrayPlayerWhoTarget[indexCell].content === SHIP) {
+      arrayPlayerWhoTarget[indexCell].content = KILL;
 
       Player.findOneAndUpdate(
         { 'socketId': PlayerWhoTargetSocketId },
         { field: arrayPlayerWhoTarget },
         () => {
           const count = countShips(cellId, arrayPlayerWhoTarget);
-          io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, 'kill', count);
+          io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, KILL, count);
         }
       );
     }
 
-    if (arrayPlayerWhoTarget[indexCell].content === 'empty') {
+    if (arrayPlayerWhoTarget[indexCell].content === EMPTY) {
       const count = countShips(cellId, arrayPlayerWhoTarget);
-      io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, 'miss', count);
+      io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, MISS, count);
     }
 
 

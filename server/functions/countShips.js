@@ -1,3 +1,5 @@
+const { SHIP, KILL} = require('../constants');
+
 function countShips(cellId, arrayIn) {
 
   const coordX = cellId.substr(0, 1);
@@ -8,42 +10,42 @@ function countShips(cellId, arrayIn) {
   }, []);
 
   let count = 0;
-//vertical
+  //vertical
   for (let i = 0; i < 10; i++) {
-    if ((i !== +coordX) && ((arrayOut[i][coordY].content === 'ship') || (arrayOut[i][coordY].content === 'kill'))) count++;
-    }
-//horizontal
-  for (let i = 0; i < 10; i++) {
-    if ((i !== +coordY) && ((arrayOut[coordX][i].content === 'ship') || (arrayOut[coordX][i].content === 'kill'))) count++;
+    if ((i !== +coordX) && ((arrayOut[i][coordY].content === SHIP) || (arrayOut[i][coordY].content === KILL))) count++;
   }
-//diagonals
+  //horizontal
+  for (let i = 0; i < 10; i++) {
+    if ((i !== +coordY) && ((arrayOut[coordX][i].content === SHIP) || (arrayOut[coordX][i].content === KILL))) count++;
+  }
+  //diagonals
   let i = coordX;
   let j = coordY;
   while ((i < 9) && (j < 9)) {
     i++;
     j++;
-    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'kill')) count++;
+    if ((arrayOut[i][j].content === SHIP) || (arrayOut[i][j].content === KILL)) count++;
   }
   i = coordX;
   j = coordY;
   while ((i > 0) && (j > 0)) {
     i--;
     j--;
-    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'kill')) count++;
+    if ((arrayOut[i][j].content === SHIP) || (arrayOut[i][j].content === KILL)) count++;
   }
   i = coordX;
   j = coordY;
   while ((i < 9) && (j > 0)) {
     i++;
     j--;
-    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'kill')) count++;
+    if ((arrayOut[i][j].content === SHIP) || (arrayOut[i][j].content === KILL)) count++;
   }
   i = coordX;
   j = coordY;
   while ((i > 0) && (j < 9)) {
     i--;
     j++;
-    if ((arrayOut[i][j].content === 'ship') || (arrayOut[i][j].content === 'kill')) count++;
+    if ((arrayOut[i][j].content === SHIP) || (arrayOut[i][j].content === KILL)) count++;
   }
   return count;
 }
