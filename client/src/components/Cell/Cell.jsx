@@ -8,22 +8,24 @@ import SvgNone from '../svg/SvgNone';
 import SvgDownShip from '../svg/SvgDownShip';
 import styles from './Cell.module.scss';
 import PropTypes from 'prop-types';
+import { SHIP, EMPTY, AIM, NONE, BOMB, KILL, MISS } from '../../constants';
 
 const Cell = (props) => {
 
   // TODO delete doubleclick
 
   const onClickToCell = usePicture(props);
-  
+
   //TODO WTF? none and svgNone
   return (
     <div className={styles.cell} onClick={onClickToCell}>
-      {props.content === 'ship' && <SvgShip />}
-      {props.content === 'empty' && <SvgEmpty />}
-      {props.content === 'aim' && <SvgAim />}
-      {props.content === 'none' && <SvgNone />}
-      {props.content === 'bomb' && <SvgBomb />}
-      {props.content === 'kill' && <SvgDownShip />}
+      {props.content === SHIP && <SvgShip />}
+      {props.content === EMPTY && <SvgEmpty />}
+      {props.content === AIM && <SvgAim />}
+      {props.content === NONE && <SvgNone />}
+      {props.content === BOMB && <SvgBomb />}
+      {props.content === KILL && <SvgDownShip />}
+      {props.content === MISS && <SvgEmpty />}
     </div>
   )
 }
