@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { changeContentFieldInStore } from '../../redux/actions/actionField';
 import { incrementCountShipsMyFieldInStore, decrementCountShipsMyFieldInStore } from '../../redux/actions/actionBegin';
+import { SHIP, EMPTY, AIM, NONE, BOMB, MYFIELD, ENEMYFIELD, BATTLE, BEGIN } from '../../constants';
+
 
 export const usePicture = (props) => {
 
@@ -11,38 +13,38 @@ export const usePicture = (props) => {
 
   const onCellClick = () => {
 
-    if (props.type === 'myField' && conditionGame === 'begin') {
-      if (props.content === 'empty' && countShips !== 5) {
+    if (props.type === MYFIELD && conditionGame === BEGIN) {
+      if (props.content === EMPTY && countShips !== 5) {
         dispatch(incrementCountShipsMyFieldInStore());
-        dispatch(changeContentFieldInStore('myField', props.id, 'ship', ''));
+        dispatch(changeContentFieldInStore(MYFIELD, props.id, SHIP, ''));
       }
-      if (props.content === 'ship') {
+      if (props.content === SHIP) {
         dispatch(decrementCountShipsMyFieldInStore());
-        dispatch(changeContentFieldInStore('myField', props.id, 'empty', ''));
+        dispatch(changeContentFieldInStore(MYFIELD, props.id, EMPTY, ''));
       }
     }
 
-    if (props.type === 'enemyField' && conditionGame === 'battle') {
+    if (props.type === ENEMYFIELD && conditionGame === BATTLE) {
       switch (props.content) {
-        case 'empty': {
+        case EMPTY: {
           arrayEnemy.forEach(element => {
-            if (element.content === 'aim') {
-              element.content = 'empty';
+            if (element.content === AIM) {
+              element.content = EMPTY;
             }
           })
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'aim', ''));
+          dispatch(changeContentFieldInStore(ENEMYFIELD, props.id, AIM, ''));
           break;
         }
-        case 'aim': {
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'none', ''));
+        case AIM: {
+          dispatch(changeContentFieldInStore(ENEMYFIELD, props.id, NONE, ''));
           break;
         }
-        case 'none': {
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'bomb', ''));
+        case NONE: {
+          dispatch(changeContentFieldInStore(ENEMYFIELD, props.id, BOMB, ''));
           break;
         }
-        case 'bomb': {
-          dispatch(changeContentFieldInStore('enemyField', props.id, 'empty', ''));
+        case BOMB: {
+          dispatch(changeContentFieldInStore(ENEMYFIELD, props.id, EMPTY, ''));
           break;
         }
       }
