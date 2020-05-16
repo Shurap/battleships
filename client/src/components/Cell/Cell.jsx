@@ -15,8 +15,7 @@ const Cell = (props) => {
   // TODO delete doubleclick
 
   const onClickToCell = usePicture(props);
-  
-  //TODO WTF? none and svgNone
+
   return (
     <div className={styles.cell} onClick={onClickToCell}>
       {props.content === 'ship' && <SvgShip />}
@@ -33,7 +32,11 @@ const Cell = (props) => {
       {props.count === 3 && <SvgThree />}
       {props.count === 4 && <SvgFour />}
       {props.count === 5 && <SvgFive />}
-      {/* <SvgThree /> */}
+
+      {/* <SvgDownShip />
+      <SvgFour /> */}
+      {/* <SvgBomb /> */}
+
     </div>
   )
 }

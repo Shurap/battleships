@@ -3,11 +3,14 @@ import Field from '../Field/Field';
 import styles from './PageGame.module.scss';
 import Chat from '../Chat/Chat';
 import Button from '../Button/Button';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getCellUnderAim } from '../../selectors/getCellUnderAim';
 import { sendShoot } from '../socketio/socketio';
+import { incrementNumberMoves } from '../../redux/actions/actionCondition';
 
 const PageGame = () => {
+
+  const dispatch = useDispatch()
 
   const myField = useSelector((state) => state.fields.myField);
   const enemyField = useSelector((state) => state.fields.enemyField);
@@ -18,7 +21,7 @@ const PageGame = () => {
 
   const onClickButton = () => {
     sendShoot(player, cellUnderAim.id);
-    console.log('send:', player, cellUnderAim.id);
+    dispatch(incrementNumberMoves());
   }
 
   return (

@@ -5,7 +5,7 @@ import styles from './PageHome.module.scss';
 import Button from '../Button/Button';
 import history from '../common/history';
 import SvgText from '../svg/SvgText';
-import SvgDraft from '../svg/SvgDraft';
+import SvgDownShip from '../svg/SvgDownShip';
 
 import { SvgZero, SvgOne, SvgTwo, SvgThree, SvgFour, SvgFive } from '../svg/SvgLetters';
 
@@ -36,7 +36,7 @@ const PageHome = () => {
         />
       </div>
 
-      {/* <SvgDraft /> */}
+      {/* <SvgDownShip /> */}
 
       {/* <SvgZero /> */}
 
