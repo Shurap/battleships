@@ -20,12 +20,7 @@ function onShoot(io) {
 
     if (arrayPlayerWhoTarget[indexCell].content === SHIP) {
       arrayPlayerWhoTarget[indexCell].content = KILL;
-      //----------------------------
-      // if (countKill(arrayPlayerWhoTarget, KILL)) {
-      //   io.in(PlayerWhoShootSocketId).emit('the end', 'You WON !');
-      //   io.in(PlayerWhoTargetSocketId).emit('the end', 'You LOST !');
-      // }
-      //-----------------------------------
+
       Player.findOneAndUpdate(
         { 'socketId': PlayerWhoTargetSocketId },
         { field: arrayPlayerWhoTarget },
@@ -42,15 +37,13 @@ function onShoot(io) {
       io.in(PlayerWhoShootSocketId).emit('result shoot', cellId, EMPTY, +count, WAIT);
       io.in(PlayerWhoTargetSocketId).emit('where shoot', cellId, MISS, TURN);
     }
-//---------------------------------
+
     if (countKill(arrayPlayerWhoTarget, KILL)) {
       const arrayWon = await Player.find({ 'socketId': PlayerWhoShootSocketId }, 'field');
-      // console.log(arrayWon)
       const arrayLost = await Player.find({ 'socketId': PlayerWhoTargetSocketId }, 'field');
       io.in(PlayerWhoShootSocketId).emit('the end', 'You WON !', arrayLost[0].field);
       io.in(PlayerWhoTargetSocketId).emit('the end', 'You LOST !', arrayWon[0].field);
     }
-
   }
 }
 

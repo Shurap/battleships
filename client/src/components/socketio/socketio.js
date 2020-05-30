@@ -5,8 +5,6 @@ import { addInfoToStore } from '../../redux/actions/actionInfo';
 import { changeGamePhaseInStore, changeTurnInStore } from '../../redux/actions/actionCondition';
 import { changeContentFieldInStore } from '../../redux/actions/actionField';
 import history from '../common/history'
-import { KILL, MISS } from '../../constants';
-
 
 const socket = io.connect("http://localhost:5000");
 
@@ -48,8 +46,6 @@ socket.on('where shoot', (id, content, turn) => {
 })
 
 socket.on('the end', (text, array) => {
-  // store.dispatch(changeGamePhaseInStore('battle'))
-  // console.log(arrayWon)
   history.push({
     pathname: '/end',
     state: {
@@ -58,7 +54,6 @@ socket.on('the end', (text, array) => {
     }
   })
 })
-
 
 export const sendMessage = (message) => {
   socket.emit("chat message", message);

@@ -19,8 +19,7 @@ const PageEnd = (props) => {
 
         <div className={styles.two}>
           <Field
-            // array={props.location.state.field}
-            array = {finishedArray}
+            array={finishedArray}
             type={'enemyField'}
           />
         </div>

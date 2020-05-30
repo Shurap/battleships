@@ -1,5 +1,4 @@
 import {
-  ADD_NICK_TO_STORE,
   ADD_INFO_TO_STORE
 } from '../constants';
 
