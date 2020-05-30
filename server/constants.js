@@ -2,7 +2,9 @@ module.exports = {
   SHIP: 'ship',
   KILL: 'kill',
   EMPTY: 'empty',
-  MISS: 'miss'
+  MISS: 'miss',
+  TURN: 'turn',
+  WAIT: 'wait'
 };
 // export const EMPTY = 'empty';
 // export const AIM = 'aim';

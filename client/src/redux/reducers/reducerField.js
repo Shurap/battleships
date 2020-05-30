@@ -10,7 +10,7 @@ for (let i = 0; i < 10; i++) {
     const content = {
       id: `${i}${j}`,
       content: 'empty',
-      count:''
+      count: null
     }
     myField.push(content)
     enemyField.push(content)

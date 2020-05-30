@@ -3,7 +3,7 @@ import styles from './SvgEdit.module.scss';
 
 const SvgEdit = () => {
   return (
-    <svg className={styles.svg} x="0px" y="0px" viewBox="0 0 500 100" >
+    <svg className={styles.svg} viewBox="0 0 500 100" >
       <path className={styles.path} strokeWidth="3"
         d="M495.28,94.98c-24.22-2.39-48.91-2.22-73.28-1.06c-3.05,0.15-6.09,0.3-9.12,0.46
         c-29.59,0.55-59.28-1.01-89.12,0.13c-3.32,0.13-6.63,0.29-9.95,0.49c-27.85-1.6-55.82-1.28-83.8-0.58c-7,0.18-13.99,0.36-20.99,0.47

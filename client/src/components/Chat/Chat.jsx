@@ -17,7 +17,6 @@ const Chat = () => {
     
     const block = document.getElementById("messages");
     block.scrollTop = block.scrollHeight;
-    // console.log('use', block)
     //TODO ref
   })
 
@@ -45,10 +44,10 @@ const Chat = () => {
       <div className={styles.messages} id='messages'>{allChat}</div>
       <div className={styles.wrapperSend}>
         <input className={styles.inputChat} onChange={onTextChange} value={message} />
-        <button onClick={onMessageSubmit}>Send</button>
+        <button className={styles.button} onClick={onMessageSubmit}>Send</button>
       </div>
     </div>
   )
 }
-
+//TODO crash button send
 export default Chat;

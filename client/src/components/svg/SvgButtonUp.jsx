@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const SvgButtonUp = (props) => {
 	return (
-		<svg className={styles.svg} x="0px" y="0px" viewBox="0 0 500 250" >
+		<svg className={styles.svg} /*x="0px" y="0px"*/ viewBox="0 0 500 250" >
 			<path className={styles.path} strokeWidth="5" stroke={props.color}
 				d="M65.4,121.06c0.82-29.6,1.65-59.2,2.49-88.8c0.1-3.4,0.4-7.24,3.05-9.4c1.81-1.47,4.27-1.76,6.6-2
 				c18.62-1.9,37.28-3.81,56-3.68c20.73,0.14,40.84,2.43,61.68,0.72c21.21-1.74,42.33-4.86,63.63-5.22

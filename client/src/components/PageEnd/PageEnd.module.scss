@@ -1,7 +1,7 @@
-@import '../../globalCSS/mixins.scss';
 @import '../../globalCSS/variables.scss';
+@import '../../globalCSS/mixins.scss';
 
-.pageBegin {
+.pageEnd {
   // border: 5px solid red;
   display: flex;
   flex-direction: column;
@@ -39,10 +39,45 @@
   height: 17%;
   display: flex;
   justify-content: center;
-  font-size: 50px;
+  @include font(50px, Hand);
   padding-right: 20%;
   padding-left: 20%;
 }
+
+
+
+
+
+
+// .wrapperText {
+//   // border: 5px solid red;
+//   display: flex;
+//   align-self: center;
+//   width: 70%;
+//   max-width: 500px;
+// }
+
+//------------------------------------------------------
+
+// .pageBegin {
+//   // border: 5px solid red;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   min-height: 100vh;
+//   min-width: 100vw;
+// }
+
+// .content {
+//   // border: 5px solid brown;
+//   height: 800px;
+//   width: 90%;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+
 
 @media (max-width: 570px) {
   .content {

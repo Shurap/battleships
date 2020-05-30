@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SvgAim.module.scss';
+import styles from './SvgNone.module.scss';
 
 const SvgNone = () => {
   return (

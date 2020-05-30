@@ -1,8 +1,9 @@
 @import '../../globalCSS/variables.scss';
 
 .svg {
-  // border: 5px solid black;
-  // width: 100%;
+  // border: 1px solid green;
+  width: 50%;
+  height: 50%;
 }
 
 .path {
@@ -11,14 +12,14 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10;
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  animation: dash 3s .3s linear forwards;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: dash 1s .3s linear forwards;
 }
 
 @keyframes dash {
   from {
-    stroke-dashoffset: 2000;
+    stroke-dashoffset: 1200;
   }
 
   to {

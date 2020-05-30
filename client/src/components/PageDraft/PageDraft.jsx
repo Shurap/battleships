@@ -1,6 +1,6 @@
 import React from 'react';
 import Field from '../Field/Field';
-import styles from './PageGame.module.scss';
+import styles from './PageDraft.module.scss';
 import Chat from '../Chat/Chat';
 import Button from '../Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import { getCellUnderAim } from '../../selectors/getCellUnderAim';
 import { sendShoot } from '../socketio/socketio';
 import { incrementNumberMoves } from '../../redux/actions/actionCondition';
 
-const PageGame = () => {
+const PageDraft = () => {
 
   const dispatch = useDispatch()
 
@@ -55,4 +55,4 @@ const PageGame = () => {
   )
 }
 
-export default PageGame;
+export default PageDraft;

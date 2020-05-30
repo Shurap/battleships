@@ -5,6 +5,7 @@ import SvgEmpty from '../svg/SvgEmpty';
 import SvgAim from '../svg/SvgAim';
 import SvgBomb from '../svg/SvgBomb';
 import SvgNone from '../svg/SvgNone';
+import SvgSplash from '../svg/SvgSplash';
 import SvgDownShip from '../svg/SvgDownShip';
 import styles from './Cell.module.scss';
 import PropTypes from 'prop-types';
@@ -25,7 +26,7 @@ const Cell = (props) => {
       {props.content === NONE && <SvgNone />}
       {props.content === BOMB && <SvgBomb />}
       {props.content === KILL && <SvgDownShip />}
-      {props.content === MISS && <SvgEmpty />}
+      {props.content === MISS && <SvgSplash />}
 
       {props.count === 0 && <SvgZero />}
       {props.count === 1 && <SvgOne />}
@@ -33,10 +34,6 @@ const Cell = (props) => {
       {props.count === 3 && <SvgThree />}
       {props.count === 4 && <SvgFour />}
       {props.count === 5 && <SvgFive />}
-
-      {/* <SvgDownShip />
-      <SvgFour /> */}
-      {/* <SvgBomb /> */}
 
     </div>
   )

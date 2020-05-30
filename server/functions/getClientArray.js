@@ -14,6 +14,7 @@ function getClientArray(io) {
     const values = field.map((element) => {
       return element.field.length
     });
+    io.in(info.room).emit('terminal', `First player ready. Waiting second player!`);
 
     if (values[0] && values[1]) {
       io.in(info.room).emit('terminal', `BATTLE!!!`);
@@ -27,14 +28,3 @@ function getClientArray(io) {
   }
 }
 module.exports = getClientArray;
-
-// let userRead = async (userID) => {
-
-//   mongoose.connect(`${url}${database}`, optionsConnect);
-
-//   return await User.find({ uid: userID }, (err, doc) => {
-//       mongoose.disconnect();
-//       return doc;
-//   });
-
-// };

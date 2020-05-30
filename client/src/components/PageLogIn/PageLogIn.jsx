@@ -26,29 +26,35 @@ const PageLogIn = () => {
   }
 
   return (
-    <div className={styles.PageLogIn}>
-      <div className={styles.wrapperInputs}>
+    <div className={styles.pageLogIn}>
+      <div className={styles.content}>
 
-        <div className={styles.wrapperText}>Nick:</div>
+        <div className={styles.one}>
+          <div className={styles.wrapperText}>Nick:</div>
 
-        <div className={styles.wrapperSvg}>
-          <input className={styles.inputPageLogIn} onChange={onNickChange} value={nick} />
-          <SvgEdit />
+          <div className={styles.wrapperSvg}>
+            <input className={styles.input} onChange={onNickChange} value={nick} />
+            <SvgEdit />
+          </div>
         </div>
 
-        <div className={styles.wrapperText}>Name of game:</div>
+        <div className={styles.two}>
+          <div className={styles.wrapperText}>Name of game:</div>
 
-        <div className={styles.wrapperSvg}>
-          <input className={styles.inputPageLogIn} onChange={onGameChange} value={game} />
-          <SvgEdit />
+          <div className={styles.wrapperSvg}>
+            <input className={styles.input} onChange={onGameChange} value={game} />
+            <SvgEdit />
+          </div>
         </div>
 
-        <div className={styles.wrapperSvg}>
+        <div className={styles.three}>
+        {/* <div className={styles.wrapperSvg}> */}
           <Button
             state={state}
             name={'Start'}
             click={onClickButton}
           />
+        {/* </div> */}
         </div>
       </div>
 

@@ -20,24 +20,22 @@ const Field = (props) => {
   });
 
   return (
-    // <div className={styles.wrapperField}>
-      <div className={styles.field}>
-        <div className={styles.wrapperLine}>
-          <div className={styles.line}>{cells.slice(0, 10)}</div>
-          <div className={styles.line}>{cells.slice(10, 20)}</div>
-          <div className={styles.line}>{cells.slice(20, 30)}</div>
-          <div className={styles.line}>{cells.slice(30, 40)}</div>
-          <div className={styles.line}>{cells.slice(40, 50)}</div>
-          <div className={styles.line}>{cells.slice(50, 60)}</div>
-          <div className={styles.line}>{cells.slice(60, 70)}</div>
-          <div className={styles.line}>{cells.slice(70, 80)}</div>
-          <div className={styles.line}>{cells.slice(80, 90)}</div>
-          <div className={styles.line}>{cells.slice(90, 100)}</div>
-        </div>
-
-        <SvgField />
+    <div className={styles.field}>
+      <div className={styles.wrapperLine}>
+        <div className={styles.line}>{cells.slice(0, 10)}</div>
+        <div className={styles.line}>{cells.slice(10, 20)}</div>
+        <div className={styles.line}>{cells.slice(20, 30)}</div>
+        <div className={styles.line}>{cells.slice(30, 40)}</div>
+        <div className={styles.line}>{cells.slice(40, 50)}</div>
+        <div className={styles.line}>{cells.slice(50, 60)}</div>
+        <div className={styles.line}>{cells.slice(60, 70)}</div>
+        <div className={styles.line}>{cells.slice(70, 80)}</div>
+        <div className={styles.line}>{cells.slice(80, 90)}</div>
+        <div className={styles.line}>{cells.slice(90, 100)}</div>
       </div>
-    // </div>
+
+      <SvgField />
+    </div>
   )
 }
 

@@ -22,7 +22,7 @@ const Button = (props) => {
   }
 
   const activeButton = (
-    <div className={styles.button} onClick={onClick}>
+    <div className={styles.button} onClick={onClick} /*style={{ height: props.height, width: props. width }}*/>
       <div className={(statePress) ? styles.wrapperTextDown : styles.wrapperTextUp}>
         {props.name}
       </div>
@@ -51,7 +51,9 @@ const Button = (props) => {
 Button.propTypes = {
   name: PropTypes.string,
   state: PropTypes.bool,
-  click: PropTypes.func
+  click: PropTypes.func,
+  // width: PropTypes.string,
+  // height: PropTypes.string,
 }
 
 export default Button;

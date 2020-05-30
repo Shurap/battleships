@@ -1,17 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SvgBigShip from '../svg/SvgBigShip';
-import styles from './PageHome.module.scss';
 import Button from '../Button/Button';
 import history from '../common/history';
-import SvgText from '../svg/SvgText';
-import SvgDownShip from '../svg/SvgDownShip';
+import styles from './PageHome.module.scss';
 
-import { SvgZero, SvgOne, SvgTwo, SvgThree, SvgFour, SvgFive } from '../svg/SvgLetters';
-
-//TODO Have to delete SvgLetters.jsx
-
-const PageHome = () => {
+const PageHome = (props) => {
 
   const onClickButton = () => {
     history.push('/login')
@@ -19,27 +12,22 @@ const PageHome = () => {
 
   return (
     <div className={styles.pageHome}>
-
-      <div className={styles.wrapperText}>
-        Battle Sea
+      <div className={styles.content}>
+        <div className={styles.one}>
+          Battle Sea
+        </div>
+        <div className={styles.two}>
+          <SvgBigShip />
+        </div>
+        <div className={styles.separate}></div>
+        <div className={styles.three}>
+          <Button
+            state={true}
+            name={'Start'}
+            click={onClickButton}
+          />
+        </div>
       </div>
-
-      <SvgBigShip />
-
-      <SvgText />
-
-      <div className={styles.wrapperSvg}>
-        <Button
-          state={true}
-          name={'Start'}
-          click={onClickButton}
-        />
-      </div>
-
-      {/* <SvgDownShip /> */}
-
-      {/* <SvgZero /> */}
-
     </div>
   )
 }

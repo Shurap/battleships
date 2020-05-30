@@ -1,28 +1,26 @@
 @import '../../globalCSS/variables.scss';
 
 .svg {
-  // border: 1px solid green;
-  position: absolute;
-  margin: 10%;
-  width: 80%;
-  height: 80%;
+  // border: 1px solid blue;
+  // padding: 10%;
+  width: 50%;
+  height: 50%;
 }
 
 .path {
-  // fill: rgba(10, 10, 10, 0.0);
-  // fill: $general-color;
+  fill: rgba(10, 10, 10, 0.0);
   stroke: $general-color;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: dash 3s .3s linear forwards;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: dash 5s .3s linear forwards;
 }
 
 @keyframes dash {
   from {
-    stroke-dashoffset: 200;
+    stroke-dashoffset: 50;
   }
 
   to {

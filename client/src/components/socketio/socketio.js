@@ -5,6 +5,8 @@ import { addInfoToStore } from '../../redux/actions/actionInfo';
 import { changeGamePhaseInStore, changeTurnInStore } from '../../redux/actions/actionCondition';
 import { changeContentFieldInStore } from '../../redux/actions/actionField';
 import history from '../common/history'
+import { KILL, MISS } from '../../constants';
+
 
 const socket = io.connect("http://localhost:5000");
 
@@ -35,9 +37,26 @@ socket.on('battle', (data) => {
   store.dispatch(changeTurnInStore(data))
 });
 
-socket.on('result shoot', (id, content, count) => {
- // if (content === 'kill')
+socket.on('result shoot', (id, content, count, turn) => {
   store.dispatch(changeContentFieldInStore('enemyField', id, content, count));
+  store.dispatch(changeTurnInStore(turn))
+})
+
+socket.on('where shoot', (id, content, turn) => {
+  store.dispatch(changeContentFieldInStore('myField', id, content));
+  store.dispatch(changeTurnInStore(turn));
+})
+
+socket.on('the end', (text, array) => {
+  // store.dispatch(changeGamePhaseInStore('battle'))
+  // console.log(arrayWon)
+  history.push({
+    pathname: '/end',
+    state: {
+      text: text,
+      field: array,
+    }
+  })
 })
 
 

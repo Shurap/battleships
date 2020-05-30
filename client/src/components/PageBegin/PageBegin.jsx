@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import styles from './PageBegin.module.scss';
 import { sendMyField } from '../socketio/socketio';
 import { changeGamePhaseInStore } from '../../redux/actions/actionCondition';
- 
+
 const PageBegin = () => {
 
   const dispatch = useDispatch()
@@ -21,27 +21,31 @@ const PageBegin = () => {
     dispatch(changeGamePhaseInStore('wait'));
   }
 
-
-
   return (
     <div className={styles.pageBegin}>
-      <Chat />
-      <Field
-        array={myField}
-        type='myField'
-      />
-      {/* <div className={styles.wrapperButton}> */}
-      <Button
-        state={countShips === 5 && condition === 'begin'}
-        name={'Begin'}
-        click={onClickButton}
-      />
-      {/* </div> */}
+      <div className={styles.content}>
 
-      {/* {countShips === 5 &&
-        <button onClick={onClickToStart}>Start</button>
-      } */}
-    </div>
+        <div className={styles.one}>
+          <Chat />
+        </div>
+
+        <div className={styles.two}>
+          <Field
+            array={myField}
+            type='myField'
+          />
+        </div>
+
+        <div className={styles.three}>
+          <Button
+            state={countShips === 5 && condition === 'begin'}
+            name={'Begin'}
+            click={onClickButton}
+          />
+        </div>
+        
+      </div>
+    </div >
   )
 }
 

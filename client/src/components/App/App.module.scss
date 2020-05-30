@@ -1,13 +1,14 @@
 @import '../../globalCSS/mixins.scss';
 
 .app {
+  // margin: 0px;
   // background-image: url('../../images/paper.jpg');
   // background-image: url('../../images/ground.jpg');
   // background-repeat: no-repeat;
 
   // @include font(20px, Lemon)
   // @include font(20px, Sensei)
-  @include font(20px, Hand)
+  // @include font(20px, Hand)
 
   // background-size: 60%;
   // background-size: contain;
