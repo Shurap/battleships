@@ -4,10 +4,12 @@ function getClientArray(io) {
 
   return async function ({ info, arrayMyField }) {
 
-    Player.findByIdAndUpdate(
+    await Player.findByIdAndUpdate(
       { _id: info.dbId },
       { field: arrayMyField },
-      () => { } //TODO why?
+      (err) => {
+        if (err) console.log('err', err)
+      }
     );
 
     const field = await Player.find({ 'room': info.room }, 'field')
