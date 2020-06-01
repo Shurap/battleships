@@ -34,7 +34,6 @@ const Cell = (props) => {
       {props.count === 3 && <SvgThree />}
       {props.count === 4 && <SvgFour />}
       {props.count === 5 && <SvgFive />}
-
     </div>
   )
 }

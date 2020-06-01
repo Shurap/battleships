@@ -1,27 +1,6 @@
 @import '../../globalCSS/variables.scss';
-
-.svg {
-  // border: 5px solid black;
-  // max-height: 100px;
-}
+@import '../../globalCSS/mixins.scss';
 
 .path {
-  fill: rgba(10, 10, 10, 0.0);
-  stroke: $general-color;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 5000;
-  stroke-dashoffset: 5000;
-  animation: dash 3s .3s linear forwards;
-}
-
-@keyframes dash {
-  from {
-    stroke-dashoffset: 5000;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
+  @include path(5, 2s, 4000);
 }

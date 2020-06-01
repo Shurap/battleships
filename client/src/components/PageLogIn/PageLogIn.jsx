@@ -22,7 +22,6 @@ const PageLogIn = () => {
 
   const onClickButton = () => {
     createGame(nick, game);
-    // props.history.push('/begin');
   }
 
   return (
@@ -48,13 +47,11 @@ const PageLogIn = () => {
         </div>
 
         <div className={styles.three}>
-        {/* <div className={styles.wrapperSvg}> */}
           <Button
             state={state}
             name={'Start'}
             click={onClickButton}
           />
-        {/* </div> */}
         </div>
       </div>
 

@@ -2,7 +2,6 @@
 @import '../../globalCSS/variables.scss';
 
 .pageGame {
-  // border: 5px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,21 +11,18 @@
 }
 
 .content {
-  // border: 5px solid brown;
   width: 90%;
   display: flex;
   flex-direction: column;
 }
 
 .one {
-  // border: 5px solid green;
   display: flex;
   justify-content: center;
   @include font(20px, Hand);
 }
 
 .two {
-  // border: 5px solid green;
   height: 60%;
   display: flex;
   justify-content: center;
@@ -34,7 +30,6 @@
 }
 
 .three {
-  // border: 5px solid green;
   height: 17%;
   display: flex;
   justify-content: center;

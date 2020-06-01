@@ -1,7 +1,6 @@
 @import '../../globalCSS/mixins.scss';
 
 .button {
-  // border: 5px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,18 +9,14 @@
   cursor: pointer;
   @include font(1em, Hand);
   position: relative;
-
-  // -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
   -webkit-tap-highlight-color: transparent;
 }
 
 .wrapperTextUp {
-  // border: 1px solid yellow;
   position: absolute;
 }
 
 .wrapperTextDown {
-  // border: 1px solid blue;
   top: 33%;
   position: absolute;
 }

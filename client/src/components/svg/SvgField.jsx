@@ -3,8 +3,8 @@ import styles from './SvgField.module.scss';
 
 const SvgField = () => {
 	return (
-		<svg className={styles.svg} x="0px" y="0px" viewBox="0 0 1000 1000" >
-			<path className={styles.path} strokeWidth="5"
+		<svg className={styles.svg} viewBox="0 0 1000 1000" >
+			<path className={styles.path}
 				d="M995,995c0,0-1.18,0-3.46,0c-2.28,0-5.65,0-10.07-0.1C949,991,917,993,885.22,995c-11.22,0-23.13,0-35.65,0
 				c-12.52,0-25.65,0-39.31,0c-2.54,0-5.1,0-7.68,0c-36.57-2-72.57-5-108.3-0.05c-2.98,0.04-5.95,0.05-8.94,0.05
 				c-17.83,0-36.03,0-54.5,0c-5.47,0-10.97-0.06-16.48-0.27C581,990,547,993,513.56,994.93c-5.65,0.07-11.3,0.07-16.95,0.07

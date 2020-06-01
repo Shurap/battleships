@@ -9,6 +9,26 @@
 @mixin font($size, $font) {
   font-family: $font;
   font-size: $size;
-  // font-weight: bold;
   color: $general-color;
+}
+
+@mixin path($width, $time, $dash) {
+  fill: rgba(10, 10, 10, 0.0);
+  stroke-width: $width;
+  stroke: $general-color;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: $dash;
+  stroke-dashoffset: $dash;
+  animation: dash $time .3s linear forwards;
+
+  @keyframes dash {
+    from {
+      stroke-dashoffset: $dash;
+    }
+  
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
 }

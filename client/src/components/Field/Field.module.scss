@@ -1,5 +1,4 @@
  .field {
-   // border: 5px solid black;
    position: relative;
    width: 100%;
    max-width: 430px;
@@ -7,14 +6,12 @@
  }
 
  .wrapperLine {
-   // border: 5px solid yellow;
    display: flex;
    flex-direction: column;
    position: absolute;
  }
 
  .line {
-   // border: 5px solid gray;
    display: flex;
    align-items: center;
    justify-content: center;

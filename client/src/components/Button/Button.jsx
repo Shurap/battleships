@@ -7,7 +7,6 @@ import styles from './Button.module.scss';
 import PropTypes from 'prop-types';
 
 const Button = (props) => {
-  //TODO make with defaultProps width, height
   const [statePress, setStatePress] = useState(false);
 
   const onClick = async () => {

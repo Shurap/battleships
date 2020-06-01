@@ -2,7 +2,6 @@
 @import '../../globalCSS/variables.scss';
 
 .chat {
-  // border: 5px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,7 +11,6 @@
 }
 
 .messages {
-  // border: 2px solid green;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
@@ -27,7 +25,6 @@
 }
 
 .wrapperSend {
-  // border: 2px solid red;
   display: flex;
   min-height: 20px;
 }

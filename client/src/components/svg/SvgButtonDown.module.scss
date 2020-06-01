@@ -1,7 +1,6 @@
 @import '../../globalCSS/variables.scss';
 
 .svg {
-  // border: 5px solid black;
   height: 100%;
   width: 100%;
 }
@@ -9,4 +8,5 @@
 .path {
   fill: rgba(10, 10, 10, 0.0);
   stroke: $general-color;
+  stroke-width: 5;
 }

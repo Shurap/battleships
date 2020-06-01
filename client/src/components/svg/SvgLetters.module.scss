@@ -1,16 +1,12 @@
 @import '../../globalCSS/variables.scss';
 
 .svg {
-  // border: 1px solid green;
   position: absolute;
-  // margin: 10%;
   width: 60%;
   height: 60%;
 }
 
 .path {
-  // fill: rgba(10, 10, 10, 0.0);
-  // fill: $general-color;
   stroke: $general-color;
   stroke-linecap: round;
   stroke-linejoin: round;
