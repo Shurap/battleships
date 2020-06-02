@@ -7,6 +7,7 @@ import { changeContentFieldInStore } from '../../redux/actions/actionField';
 import history from '../common/history'
 
 const socket = io.connect(process.env.PORT || "http://localhost:5000");
+console.log('!!!!!!!!!!!!!!!', process.env.PORT);
 
 socket.on('chat message', ({ nick, message }) => {
   store.dispatch(addChatMessageToStore({ nick, message }));
