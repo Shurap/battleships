@@ -26,11 +26,16 @@ db.once('open', function () {
 })
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/public'));
+  app.use(express.static(__dirname))
+  app.use(express.static(path.join(__dirname, 'client/build')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
+
+  app.get('/ping', function (req, res) {
+    return res.send('pong');
+   });
 }
 
 server.listen(PORT, () => console.log(`Listen on *: ${PORT}`));
