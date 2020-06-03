@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import styles from './PageBegin.module.scss';
 import { sendMyField } from '../socketio/socketio';
 import { changeGamePhaseInStore } from '../../redux/actions/actionCondition';
+import withAuth from '../../hocs/withAuth';
 
 const PageBegin = () => {
 
@@ -49,4 +50,4 @@ const PageBegin = () => {
   )
 }
 
-export default PageBegin;
+export default withAuth(PageBegin);

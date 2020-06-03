@@ -6,9 +6,9 @@ import { changeGamePhaseInStore, changeTurnInStore } from '../../redux/actions/a
 import { changeContentFieldInStore } from '../../redux/actions/actionField';
 import history from '../common/history'
 
-// const socket = io.connect(process.env.PORT || "http://localhost:5000");
-// console.log('!!!!!!!!!!!!!!!', process.env.PORT);
-const socket = io();
+// const socket = io.connect("http://localhost:5000");
+// const socket = io();
+const socket = (process.env.NODE_ENV === 'production') ? io() : io.connect("http://localhost:5000");
 
 socket.on('chat message', ({ nick, message }) => {
   store.dispatch(addChatMessageToStore({ nick, message }));
