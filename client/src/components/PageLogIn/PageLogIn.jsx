@@ -5,7 +5,6 @@ import SvgEdit from '../svg/SvgEdit';
 import { createGame } from '../socketio/socketio';
 import styles from './PageLogIn.module.scss';
 import Button from '../Button/Button';
-import { changeAuthStatusInStore } from '../../redux/actions/actionCondition';
 
 const PageLogIn = () => {
   // TODO Check for empty edit
@@ -25,7 +24,6 @@ const PageLogIn = () => {
   }
 
   const onClickButton = () => {
-    dispatch(changeAuthStatusInStore(true));
     createGame(nick, game);
   }
 
