@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import SvgEdit from '../svg/SvgEdit';
 import { createGame } from '../socketio/socketio';
 import styles from './PageLogIn.module.scss';
@@ -9,6 +10,8 @@ const PageLogIn = () => {
   // TODO Check for empty edit
   const [nick, setNick] = useState('');
   const [game, setGame] = useState('');
+
+  const dispatch = useDispatch()
 
   const state = (nick && game) ? true : false;
 

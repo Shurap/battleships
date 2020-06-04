@@ -4,6 +4,7 @@ import Field from '../Field/Field';
 import styles from './PageEnd.module.scss';
 import { useSelector } from 'react-redux';
 import { getFinishedArray } from '../../selectors/getFinishedArray';
+import withAuth from '../../hocs/withAuth';
 
 const PageEnd = (props) => {
 
@@ -33,4 +34,4 @@ const PageEnd = (props) => {
   )
 }
 
-export default PageEnd;
+export default withAuth(PageEnd);

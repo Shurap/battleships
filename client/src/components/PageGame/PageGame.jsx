@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCellUnderAim } from '../../selectors/getCellUnderAim';
 import { sendShoot } from '../socketio/socketio';
 import { incrementNumberMoves } from '../../redux/actions/actionCondition';
+import withAuth from '../../hocs/withAuth';
 
 const PageGame = () => {
 
@@ -55,4 +56,4 @@ const PageGame = () => {
   )
 }
 
-export default PageGame;
+export default withAuth(PageGame);

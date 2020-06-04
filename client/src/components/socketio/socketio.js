@@ -2,13 +2,17 @@ import io from "socket.io-client";
 import { addChatMessageToStore } from '../../redux/actions/actionChat'
 import store from '../../redux/store'
 import { addInfoToStore } from '../../redux/actions/actionInfo';
-import { changeGamePhaseInStore, changeTurnInStore } from '../../redux/actions/actionCondition';
 import { changeContentFieldInStore } from '../../redux/actions/actionField';
 import history from '../common/history'
+import {
+  changeGamePhaseInStore,
+  changeTurnInStore,
+  changeAuthStatusInStore
+} from '../../redux/actions/actionCondition';
 
-// const socket = io.connect(process.env.PORT || "http://localhost:5000");
-// console.log('!!!!!!!!!!!!!!!', process.env.PORT);
-const socket = io();
+// const socket = io.connect("http://localhost:5000");
+// const socket = io();
+const socket = (process.env.NODE_ENV === 'production') ? io() : io.connect("http://localhost:5000");
 
 socket.on('chat message', ({ nick, message }) => {
   store.dispatch(addChatMessageToStore({ nick, message }));
@@ -26,11 +30,12 @@ socket.on('error', (message) => {
 
 socket.on('connected to room', (info) => {
   store.dispatch(addInfoToStore(info));
+  store.dispatch(changeAuthStatusInStore(true));
   history.push('/begin');
 });
 
 socket.on('begin battle', () => {
-  store.dispatch(changeGamePhaseInStore('battle'))
+  store.dispatch(changeGamePhaseInStore('battle'));
   history.push('/game')
 })
 
