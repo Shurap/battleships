@@ -6,9 +6,12 @@ const withAuth = (Component) => {
   const WrapperComponent = (props) => {
     const authStatus = useSelector((state) => state.condition.authStatus);
     return (authStatus) ? <Component {...props} /> :
-      <h1 style={{ fontFamily: "Hand", color: "#8b00ff", fontSize: "40px", textAlign: "center" }}>
-        Unauthorized
-      </h1>
+      (
+        <div style={{ fontFamily: "Hand", color: "#8b00ff", fontSize: "20px", textAlign: "center" }}>
+          <h1>Unauthorized</h1>
+          <a href="http://battle-sea.herokuapp.com/login">Press here</a>
+        </div>
+      )
   }
 
   return WrapperComponent;
