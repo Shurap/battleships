@@ -13,8 +13,8 @@ const onShoot = require('./functions/onShoot');
 
 const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://127.0.0.1:27017/players', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect('mongodb://127.0.0.1:27017/players', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+// mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 const db = mongoose.connection;
 

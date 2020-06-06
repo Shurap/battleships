@@ -29,7 +29,15 @@ const PageGame = () => {
       <div className={styles.content}>
 
         <div className={styles.one}>
-          <Chat />
+          <div className={styles.chat}>
+            <Chat />
+          </div>
+          <div className={styles.smallField}>
+          <Field
+            array={myField}
+            type={'myField'}
+          />
+          </div>
         </div>
 
         <div className={styles.two}>
@@ -37,10 +45,10 @@ const PageGame = () => {
             array={enemyField}
             type={'enemyField'}
           />
-          <Field
+          {/* <Field
             array={myField}
             type={'myField'}
-          />
+          /> */}
         </div>
 
         <div className={styles.three}>

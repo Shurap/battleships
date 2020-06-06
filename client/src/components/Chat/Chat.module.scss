@@ -4,15 +4,16 @@
 .chat {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-height: 150px;
   height: 100%;
+  max-height: 200px;
   width: 100%;
+  max-width: 400px;
 }
 
 .messages {
-  overflow-y: scroll;
+  overflow: scroll;
   scroll-behavior: smooth;
+  height: 70%;
 }
 
 .inputChat {
@@ -20,13 +21,12 @@
   outline: none;
   background-color: transparent;
   width: 100%;
-  min-height: 20px;
   @include font(1em, Hand);
 }
 
 .wrapperSend {
   display: flex;
-  min-height: 20px;
+  padding: 2px;
 }
 
 .button {

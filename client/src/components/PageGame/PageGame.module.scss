@@ -22,6 +22,19 @@
   @include font(20px, Hand);
 }
 
+.chat {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.smallField {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  max-width: 300px;
+}
+
 .two {
   height: 60%;
   display: flex;
@@ -30,16 +43,12 @@
 }
 
 .three {
-  height: 17%;
+  height: 15%;
   display: flex;
   justify-content: center;
   font-size: 50px;
   padding-right: 20%;
   padding-left: 20%;
-}
-
-.separate {
-  height: 3%;
 }
 
 @media (max-width: 570px) {
