@@ -1,5 +1,6 @@
 //TODO Make showing error in front
 const Player = require('../models/player');
+const incrementCount = require('./incrementCount');
 
 function connectToRoom(io) {
 
@@ -20,7 +21,9 @@ function connectToRoom(io) {
 
         newPlayer.save(function (err) {
           if (err) throw error;
-        })
+          incrementCount('countBegin');
+        });
+
         io.to(gameName).emit('connected to room', newPlayer);
         io.in(gameName).emit('terminal', `Game ${gameName} created! Waiting opponent...`);
       })
@@ -30,6 +33,7 @@ function connectToRoom(io) {
 
         await newPlayer.save(function (err) {
           if (err) throw error;
+          incrementCount('countBegin');
         })
 
         const query = Player.find({ 'room': gameName });
@@ -41,7 +45,7 @@ function connectToRoom(io) {
           { new: true }
         )
         io.to(firstPlayer.socketId).emit('connected to room', firstPlayer);
-        
+
         const secondPlayer = await playerSecond.findOneAndUpdate(
           { 'socketId': socketId },
           { opponent: firstPlayer.socketId }
