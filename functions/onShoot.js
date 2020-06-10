@@ -1,6 +1,7 @@
 const Player = require('../models/player');
 const countShips = require('./countShips');
 const countKill = require('./countKill');
+const incrementCount = require('./incrementCount');
 const { SHIP, KILL, EMPTY, MISS, TURN, WAIT } = require('../constants');
 
 function onShoot(io) {
@@ -43,6 +44,7 @@ function onShoot(io) {
       const arrayLost = await Player.find({ 'socketId': PlayerWhoTargetSocketId }, 'field');
       io.in(PlayerWhoShootSocketId).emit('the end', 'You WON !', arrayLost[0].field);
       io.in(PlayerWhoTargetSocketId).emit('the end', 'You LOST !', arrayWon[0].field);
+      incrementCount('countEnd');
     }
   }
 }

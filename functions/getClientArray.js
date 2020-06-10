@@ -1,4 +1,5 @@
 const Player = require('../models/player');
+const incrementCount = require('./incrementCount');
 
 function getClientArray(io) {
 
@@ -21,6 +22,8 @@ function getClientArray(io) {
     if (values[0] && values[1]) {
       io.in(info.room).emit('terminal', `BATTLE!!!`);
       io.in(info.room).emit('begin battle');
+      
+      incrementCount('countGame');
 
       const firstId = info.socketId;
       const secondId = await Player.find({ 'socketId': firstId }, 'opponent')
